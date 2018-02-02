@@ -15,5 +15,5 @@ Small scale autonomous driving by deep learning
 | HobbyKing    | 17          | Batteries      | 2   | Turnigy 1700mah 2s 20c lipo-pack (anzüge 1/16 monster beatle, sct & buggy)                                                                                             |
 | HobbyKing    | 27          | Charger        | 1   | Accucell s60 ac-ladegerät (eu-stecker)                                                                                                                                 |
 | Konsolenkost | 33          | DS3 Controller | 1   | 1 x PS3 - Original DualShock 3 Wireless Controller #schwarz [Sony] (sehr guter Zustand) (gebraucht)                                                                    |
-|              | 306         |                |     |                                                                                                                                                                        |
+|              | **306**         |                |     |                                                                                                                                                                        |
 
