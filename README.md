@@ -3,6 +3,8 @@ Small scale autonomous driving by deep learning
 
 # Procurement
 
+Here's my experience matching the parts list 
+
 | Supplier     | Price [EUR] | Tag            | Qty | Part description                                                                                                                                                       |
 |--------------|-------------|----------------|-----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | (Amazon)     | 35          | R Pi           | 1   | Raspberry Pi 3 Model B ARM-Cortex-A53 4x 1,2GHz, 1GB RAM, WLAN, Bluetooth, LAN, 4x USB                                                                                 |
@@ -15,5 +17,5 @@ Small scale autonomous driving by deep learning
 | HobbyKing    | 17          | Batteries      | 2   | Turnigy 1700mah 2s 20c lipo-pack (anzüge 1/16 monster beatle, sct & buggy)                                                                                             |
 | HobbyKing    | 27          | Charger        | 1   | Accucell s60 ac-ladegerät (eu-stecker)                                                                                                                                 |
 | Konsolenkost | 33          | DS3 Controller | 1   | 1 x PS3 - Original DualShock 3 Wireless Controller #schwarz [Sony] (sehr guter Zustand) (gebraucht)                                                                    |
-|              | **306**         |                |     |                                                                                                                                                                        |
-
+|              | **306**         |                |     |    ###### asdf                                                                                                                                                                    |
+###### asdf
