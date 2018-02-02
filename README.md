@@ -1,9 +1,18 @@
 # ai.drive
 Small scale autonomous driving by deep learning
 
+## Overall goals
+
+Get a minimum viable vehicle running in a month! 
+
+- Vehicle drives autonomously between taped lines
+- Duct tape, chewing gum, and superglue allowed! 
+
 ## Procurement
 
-Here's my experience matching the parts list 
+*As of Feb. 2, 2018. *
+
+Here's my experience matching the parts list with the goal being getting delivery of everything down to a week or so. 
 
 | Supplier     | Price [EUR] | Tag            | Qty | Part description                                                                                                                                                       |
 |--------------|-------------|----------------|-----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -19,15 +28,27 @@ Here's my experience matching the parts list
 | Konsolenkost | 33          | DS3 Controller | 1   | 1 x PS3 - Original DualShock 3 Wireless Controller #schwarz [Sony] (sehr guter Zustand) (gebraucht)                                                                    |
 |              | **306**         |                |     |                                                                                                                                                                      |
 
+The major difference being the base car. The Exceed Magnet is basically sold out in Europe, I contacted two suppliers in Berlin who informed me that they will not be restocking either. So I spent an inordinate amount of time trying to decide on an alternative 1/16 truck chassis, with the requirement of shipping from Europe. If you allow for more shipping time/expense, you can of course expand your search. 
 
-
-The major difference being the base car;
+Here's what I came up with;
 
 |  [![car](https://github.com/MarcusJones/ai.drive/blob/master/Images/Car1.jpg)]() |  [![Chassis](https://github.com/MarcusJones/ai.drive/blob/master/Images/Chassis.jpg)](http://audioblocks.com) | 
 |:---:|:---:|
 | Car | Chassis |
 
-[![Alt text](https://img.youtube.com/vi/GdtnAzs16lQ/0.jpg)](https://www.youtube.com/watch?v=GdtnAzs16lQ)
+There are two models selling with the same chassis. The AAR version ships from Europe, other variants may not. 
+
+Here's the marketing video;
+[![Video](https://img.youtube.com/vi/GdtnAzs16lQ/0.jpg)](https://www.youtube.com/watch?v=GdtnAzs16lQ)
+
+Next steps: 
+- **Mounting:** Obviously the stock 3D printed parts are not going to fit, so will need to make a new design. I am considering laser-cut acrylic. I want to make a design with flexibility for mounting more sensors. I will wait until the car arrives to make measurements. 
+- **Software Installation**
+
+
+
+
+
 
 
 
