@@ -39,6 +39,7 @@ Here's what I came up with;
 There are two models selling with the same chassis. The AAR version ships from Europe, other variants may not. 
 
 Here's the marketing video;
+
 [![Video](https://img.youtube.com/vi/GdtnAzs16lQ/0.jpg)](https://www.youtube.com/watch?v=GdtnAzs16lQ)
 
 Next steps: 
