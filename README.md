@@ -10,7 +10,9 @@ Get a minimum viable vehicle running in a month!
 
 ## Procurement
 
-*As of Feb. 2, 2018. *
+
+*As of Feb. 2, 2018.*
+
 
 Here's my experience matching the parts list with the goal being getting delivery of everything down to a week or so. 
 
