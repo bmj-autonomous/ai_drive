@@ -1,7 +1,7 @@
 # ai.drive
 Small scale autonomous driving by deep learning
 
-# Procurement
+## Procurement
 
 Here's my experience matching the parts list 
 
@@ -17,5 +17,6 @@ Here's my experience matching the parts list
 | HobbyKing    | 17          | Batteries      | 2   | Turnigy 1700mah 2s 20c lipo-pack (anzüge 1/16 monster beatle, sct & buggy)                                                                                             |
 | HobbyKing    | 27          | Charger        | 1   | Accucell s60 ac-ladegerät (eu-stecker)                                                                                                                                 |
 | Konsolenkost | 33          | DS3 Controller | 1   | 1 x PS3 - Original DualShock 3 Wireless Controller #schwarz [Sony] (sehr guter Zustand) (gebraucht)                                                                    |
-|              | **306**         |                |     |    ###### asdf                                                                                                                                                                    |
-###### asdf
+|              | **306**         |                |     |                                                                                                                                                                      |
+
+The major difference being the base car, 
