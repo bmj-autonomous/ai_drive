@@ -32,7 +32,7 @@ The major difference being the base car. The Exceed Magnet is basically sold out
 
 Here's what I came up with;
 
-|  [![car](https://github.com/MarcusJones/ai.drive/blob/master/Images/Car1.jpg)]() |  [![Chassis](https://github.com/MarcusJones/ai.drive/blob/master/Images/Chassis.jpg)](http://audioblocks.com) | 
+|  [![car](https://github.com/MarcusJones/ai.drive/blob/master/Images/Car1.jpg)]() |  [![Chassis](https://github.com/MarcusJones/ai.drive/blob/master/Images/Chassis.jpg)]() | 
 |:---:|:---:|
 | Car | Chassis |
 
