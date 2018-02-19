@@ -1,0 +1,4 @@
+Title: Sensor Fusion by Deep Learning for Autonomous Driving  - AI.drive()
+By combining inexpensive sensors now on the market with new deep learning techniques, new solutions to autonomous driving tasks become interesting. In the present work, a hardware platform built on an RC car, raspberry pi, and camera is autonomously driven by a convolutional neural network (CNN). From this platform, additional sensors (additional camera, ultrasound, etc.) are added without significant new domain knowledge integrated in the CNN. A parametric study is carried out to investigate network architecture, sensor choice, and hyper-parameters vs. cost, power, and network performance metrics. 
+
+https://github.com/MarcusJones/ai.drive
