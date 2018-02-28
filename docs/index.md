@@ -51,7 +51,7 @@ Here's what I came up with;
 ![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)]()
 
 
-|  ![car](/docs/Post1_2018/Car1.jpg)]() |  ![Chassis](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Chassis.jpg)]() | 
+|  [![car](/docs/Post1_2018/Car1.jpg)]() |  [![Chassis](https://github.com/MarcusJones/ai.drive/docs/Post1_2018FEB02/Chassis.jpg)]() | 
 |:---:|:---:|
 | Car | Chassis |
 
@@ -59,7 +59,7 @@ There are two models selling with the same chassis. The AAR version ships from E
 
 Here's the marketing video;
 
-![Video](https://img.youtube.com/vi/GdtnAzs16lQ/0.jpg)](https://www.youtube.com/watch?v=GdtnAzs16lQ)
+[![Video](https://img.youtube.com/vi/GdtnAzs16lQ/0.jpg)](https://www.youtube.com/watch?v=GdtnAzs16lQ)
 
 Next steps: 
 - **Mounting:** Obviously the stock 3D printed parts are not going to fit, so will need to make a new design. I am considering laser-cut acrylic. I want to make a design with flexibility for mounting more sensors. I will wait until the car arrives to make measurements. 
