@@ -1,4 +1,4 @@
-[Github Repo](https://github.com/MarcusJones/ai.drive)
+[(Github Repo with source)](https://github.com/MarcusJones/ai.drive)
 
 # Current goals
 
@@ -7,9 +7,11 @@ Get a minimum viable vehicle running in a month!
 - Vehicle drives autonomously between taped lines
 - Duct tape, chewing gum, and superglue allowed! 
 
+___
 
 # Feb. 28, 2018 - Car is moving! 
 
+___
 
 # Feb. 2, 2018 - Procurement Update
 
@@ -44,7 +46,11 @@ Here's what I came up with;
 
 [![car](master/Post1_2018/Car1.jpg)]()
 
-|  [![car](/docs/Post1_2018/Car1.jpg)]() |  [![Chassis](/Post1_2018/Chassis.jpg)]() | 
+
+[![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)]()
+
+
+|  [![car](/docs/Post1_2018/Car1.jpg)]() |  [![Chassis](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Chassis.jpg)]() | 
 |:---:|:---:|
 | Car | Chassis |
 
