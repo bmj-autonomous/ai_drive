@@ -44,6 +44,14 @@ Here's what I came up with;
 ![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)
 
 
+![car](https://marcusjones.github.io/ai.drive/Post1_2018FEB02/Car1.jpg)
+
+![car](https://marcusjones.github.io/ai.drive/docs/Post1_2018FEB02/Car1.jpg)
+
+![car](https://marcusjones.github.io/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)
+
+
+
 |  ![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg) |  ![Chassis](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Chassis.jpg) | 
 |:---:|:---:|
 | Car | Chassis |
