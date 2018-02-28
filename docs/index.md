@@ -38,20 +38,13 @@ Here's what I came up with;
 
 /branch/other_file.md)
 
-[![car](/master/docs/Post1_2018/Car1.jpg)]
 
-[![car](/docs/Post1_2018/Car1.jpg)]
+![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)
 
-[![car](/Post1_2018/Car1.jpg)]
-
-[![car](master/Post1_2018/Car1.jpg)]
-
-[![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)]
-
-[![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)]
+![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)
 
 
-|  [![car](/docs/Post1_2018/Car1.jpg)] |  [![Chassis](https://github.com/MarcusJones/ai.drive/docs/Post1_2018FEB02/Chassis.jpg)] | 
+|  ![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg) |  ![Chassis](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Chassis.jpg) | 
 |:---:|:---:|
 | Car | Chassis |
 
