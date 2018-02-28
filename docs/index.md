@@ -35,24 +35,7 @@ The major difference being the base car. The Exceed Magnet is basically sold out
 
 Here's what I came up with;
 
-
-/branch/other_file.md)
-
-
-![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)
-
-![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)
-
-
-![car](https://marcusjones.github.io/ai.drive/Post1_2018FEB02/Car1.jpg)
-
-![car](https://marcusjones.github.io/ai.drive/docs/Post1_2018FEB02/Car1.jpg)
-
-![car](https://marcusjones.github.io/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg)
-
-
-
-|  ![car](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Car1.jpg) |  ![Chassis](https://github.com/MarcusJones/ai.drive/blob/master/docs/Post1_2018FEB02/Chassis.jpg) | 
+|  ![car](https://marcusjones.github.io/ai.drive/Post1_2018FEB02/Car1.jpg) |  ![chassis](https://marcusjones.github.io/ai.drive/Post1_2018FEB02/Chassis.jpg) | 
 |:---:|:---:|
 | Car | Chassis |
 
