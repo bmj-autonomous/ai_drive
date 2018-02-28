@@ -1,20 +1,17 @@
-https://github.com/MarcusJones/ai.drive
+[Github Repo](https://github.com/MarcusJones/ai.drive)
 
-# ai.drive
-Small scale autonomous driving by deep learning
-
-## Overall goals
+# Current goals
 
 Get a minimum viable vehicle running in a month! 
 
 - Vehicle drives autonomously between taped lines
 - Duct tape, chewing gum, and superglue allowed! 
 
-## Procurement
+
+# Feb. 28, 2018 - Car is moving! 
 
 
-*As of Feb. 2, 2018.*
-
+# Feb. 2, 2018 - Procurement Update
 
 Here's my experience matching the parts list with the goal being getting delivery of everything down to a week or so. 
 
