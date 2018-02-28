@@ -1,0 +1,26 @@
+---
+---
+
+@import "{{ site.theme }}";
+header { display: none;} // THIS DOESN'T DO ANYTHING!
+#header { display: none;} //THIS WORKS!
+#header {  height: 0px;}
+.credits.left { display: none;}
+
+//header {
+//  display: none;
+//}
+
+h1, h2, h3, h4, h5, h6 {
+  color:#e8e8e8;
+  //color:#969342;
+  margin:0 0 10px;
+  font-family: 'OpenSansRegular', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+//a {
+  //color:#e4ffd6;
+  //color:#fdffce;
+  //color:#d6ccff;
+//}
