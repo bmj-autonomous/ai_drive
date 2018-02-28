@@ -1,12 +1,11 @@
-
-<div style="text-align: right"> [(Github Repo with source)](https://github.com/MarcusJones/ai.drive)</div>
-
 # Current goals
 
 Get a minimum viable vehicle running in a month! 
 
 - Vehicle drives autonomously between taped lines
 - Duct tape, chewing gum, and superglue allowed! 
+
+[(Github Repo with source)](https://github.com/MarcusJones/ai.drive)
 
 ___
 
@@ -35,6 +34,13 @@ Here's my experience matching the parts list with the goal being getting deliver
 The major difference being the base car. The Exceed Magnet is basically sold out in Europe, I contacted two suppliers in Berlin who informed me that they will not be restocking either. So I spent an inordinate amount of time trying to decide on an alternative 1/16 truck chassis, with the requirement of shipping from Europe. If you allow for more shipping time/expense, you can of course expand your search. 
 
 Here's what I came up with;
+
+![car](https://marcusjones.github.io/ai.drive/Post1_2018FEB02/Car1.jpg)
+
+
+![car](/Post1_2018FEB02/Car1.jpg)
+
+![car](/ai.drive/Post1_2018FEB02/Car1.jpg)
 
 |  ![car](https://marcusjones.github.io/ai.drive/Post1_2018FEB02/Car1.jpg) |  ![chassis](https://marcusjones.github.io/ai.drive/Post1_2018FEB02/Chassis.jpg) | 
 |:---:|:---:|
