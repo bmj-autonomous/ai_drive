@@ -1,7 +1,5 @@
 
-<div style="text-align: right"> [(Github Repo with source)](https://github.com/MarcusJones/ai.drive)
- </div>
-
+<div style="text-align: right"> [(Github Repo with source)](https://github.com/MarcusJones/ai.drive)</div>
 
 # Current goals
 
