@@ -34,6 +34,17 @@ The major difference being the base car. The Exceed Magnet is basically sold out
 
 Here's what I came up with;
 
+
+/branch/other_file.md)
+
+[![car](/master/docs/Post1_2018/Car1.jpg)]()
+
+[![car](/docs/Post1_2018/Car1.jpg)]()
+
+[![car](/Post1_2018/Car1.jpg)]()
+
+[![car](master/Post1_2018/Car1.jpg)]()
+
 |  [![car](/docs/Post1_2018/Car1.jpg)]() |  [![Chassis](/Post1_2018/Chassis.jpg)]() | 
 |:---:|:---:|
 | Car | Chassis |
