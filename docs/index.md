@@ -20,16 +20,16 @@ In both areas, the official project documentation is *outstanding*, and I will j
 1. Get 
 
 Here is the vehicle, in the nude;
-![chassis](/Post1_2018FEB28/BuiltUpChassis.jpg)
+![chassis](/Post2_2018FEB28/BuiltUpChassis.jpg)
 
+As mentioned in the first post, the main difference in chassis, compared to the 'stock' car, is the battery pack. In my case, the 
+double 1700mah 2s 20c batteries. 
 
+![car](/Post2_2018FEB28/Car1.jpg)
 
-![car](/Post1_2018FEB28/Car1.jpg)
+![car](/Post2_2018FEB28/3DprintTest.jpg)
 
-![car](/Post1_2018FEB28/3DprintTest.jpg)
-
-
-![car](/Post1_2018FEB28/Car1.jpg)
+![car](/Post2_2018FEB28/Car1.jpg)
 
 ### Software
 
