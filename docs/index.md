@@ -41,7 +41,6 @@ double 1700mah 2s 20c batteries store significantly more energy, but critically,
 <img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width = 60%>
 {:/} 
 
-
 {::nomarkdown}
 <img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/3DprintTest.png" width = 80%>
 {:/} 
