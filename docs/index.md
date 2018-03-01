@@ -9,7 +9,43 @@ Get a minimum viable vehicle running in a month!
 
 ___
 
-# Feb. 28, 2018 - Car is moving! 
+# Feb. 28, 2018 - It's alive! 
+
+There were two main areas of progress so far; hardware and software. 
+
+In both areas, the official project documentation is *outstanding*, and I will just summarize and highlight the differences and challenges.  [Project instructions are here](http://docs.donkeycar.com/). 
+
+
+### Hardware
+1. Get 
+
+Here is the vehicle, in the nude;
+![chassis](/Post1_2018FEB28/BuiltUpChassis.jpg)
+
+
+
+![car](/Post1_2018FEB28/Car1.jpg)
+
+![car](/Post1_2018FEB28/3DprintTest.jpg)
+
+
+![car](/Post1_2018FEB28/Car1.jpg)
+
+### Software
+
+1. Install software to the Raspberry Pi
+	a. Write the project disk image to the SD card
+
+1. Installing software on the host (linux on my laptop)
+	a. Tensorflow and Keras
+	a. Clone the source for the 'donkeycar' project, the python code for running the vehicle
+	a. 
+
+
+
+
+
+http://localhost:8887
 
 ___
 
