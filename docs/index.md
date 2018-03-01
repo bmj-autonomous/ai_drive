@@ -30,34 +30,32 @@ double 1700mah 2s 20c batteries store significantly more energy, but critically,
 ```Max Current Draw = Capacity x C-Rating```
 
 
-| Battery pack                                | Technology | Voltage <br> [V] | Capacity <br> [mAH] | Discharge <br> [C-Rating] | Configuration <br>[S] |
+| Variant                              | Technology | Voltage <br> [V] | Capacity <br> [mAH] | Discharge <br> [C-Rating] | Configuration <br>[S] |
 |---------------------------------------------|------------|------------------|---------------------|---------------------------|-----------------------|
 | **'Stock' project car  <br> Exceed Magnet** | NiMh       | 7.2              | 1100                | Much less than 20C        | ?                     |
 | **HobbyKing Bad Bug**           <br>        | LiPo       | 14.4             | 3400                | More than 20C             | 2S * 2 = **4S1P**     |
 | **50% Bad-Bug  **    <br>   | LiPo       | 7.2              | 1700                | 20C                       | 2S * 2 = **2S1P**     |
 
-7.2V 1100mAh Ni-MH 
 
-![hardware](/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg)
 
-![3dprint](/Post2_2018FEB28/3DprintTest.png, =250x250)
+![3dprint]()
 
 ![electronics](/Post2_2018FEB28/Electronics.png)
 
 {::nomarkdown}<i>foo</i>
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" height = 100px width="48">
-{:/} 
-
-
-{::nomarkdown}<i>foo</i>
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" height = 50%>
-{:/} 
-
-
-
-{::nomarkdown}<i>foo</i>
 <img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width = 60%>
 {:/} 
+
+
+{::nomarkdown}<i>foo</i>
+<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/3DprintTest.png" width = 60%>
+{:/} 
+
+{::nomarkdown}<i>foo</i>
+<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/Electronics.png" width = 60%>
+{:/} 
+
+
 
 
 Only set the width or height, and it will scale the other automatically. And yes you can use a percentage.
