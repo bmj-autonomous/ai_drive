@@ -33,8 +33,8 @@ double 1700mah 2s 20c batteries store significantly more energy, but critically,
 | Battery pack                                | Technology | Voltage <br> [V] | Capacity <br> [mAH] | Discharge <br> [C-Rating] | Configuration <br>[S] |
 |---------------------------------------------|------------|------------------|---------------------|---------------------------|-----------------------|
 | **'Stock' project car  <br> Exceed Magnet** | NiMh       | 7.2              | 1100                | Much less than 20C        | ?                     |
-| **HobbyKing Bad Bug <br> **                 | LiPo       | 14.4             | 3400                | More than 20C             | 2S * 2 = **4S1P**     |
-| **50% Bad-Bug <br> **                       | LiPo       | 7.2              | 1700                | 20C                       | 2S * 2 = **2S1P**     |
+| **HobbyKing Bad Bug**           <br>        | LiPo       | 14.4             | 3400                | More than 20C             | 2S * 2 = **4S1P**     |
+| **50% Bad-Bug  **    <br>   | LiPo       | 7.2              | 1700                | 20C                       | 2S * 2 = **2S1P**     |
 
 7.2V 1100mAh Ni-MH 
 
@@ -47,6 +47,12 @@ double 1700mah 2s 20c batteries store significantly more energy, but critically,
 <img src="/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width="48">
 
 <img src="/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" height = 100px width="48">
+
+
+
+<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" height = 100px width="48">
+
+
 
 ### Software
 
