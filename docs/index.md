@@ -44,6 +44,10 @@ double 1700mah 2s 20c batteries store significantly more energy, but critically,
 
 ![electronics](/Post2_2018FEB28/Electronics.png)
 
+<img src="/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width="48">
+
+<img src="/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" height = 100px width="48">
+
 ### Software
 
 1. Install software to the Raspberry Pi
