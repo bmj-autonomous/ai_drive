@@ -13,23 +13,39 @@ ___
 
 There were two main areas of progress so far; hardware and software. 
 
-In both areas, the official project documentation is *outstanding*, and I will just summarize and highlight the differences and challenges.  [Project instructions are here](http://docs.donkeycar.com/). 
+In both areas, the official project documentation is *outstanding*, and I will just summarize and highlight the differences and challenges. 
+
+ [Project instructions are here](http://docs.donkeycar.com/). 
 
 
 ### Hardware
 1. Get 
 
 Here is the vehicle, in the nude;
-![chassis](/Post2_2018FEB28/BuiltUpChassis.jpg)
+![chassis](/Post2_2018FEB28/OriginalChassis.jpg)
 
-As mentioned in the first post, the main difference in chassis, compared to the 'stock' car, is the battery pack. In my case, the 
-double 1700mah 2s 20c batteries. 
+As mentioned in the first post, the main difference in chassis, compared to the 'stock' car, is the battery pack. In this case, the 
+double 1700mah 2s 20c batteries store significantly more energy, but critically, also have a higher discharge rate, which is represented by the **C-Rating```. The table below lists the key parameters;
 
-![car](/Post2_2018FEB28/Car1.jpg)
+```Max Current Draw = Capacity x C-Rating```
 
-![car](/Post2_2018FEB28/3DprintTest.jpg)
 
-![car](/Post2_2018FEB28/Car1.jpg)
+| Battery pack                     | Voltage <br> [V] | Capacity <br> [mAH] |   |   |
+|----------------------------------|------------------|---------------------|---|---|
+| 'Stock' project car  <br> Magnet | 7.2              | 1100                |   |   |
+| Bad Bug                          | 7.2              | 3400                |   |   |
+| Half                             |                  |                     |   |   |
+
+
+
+
+7.2V 1100mAh Ni-MH 
+
+![hardware](/Post2_2018FEB28/BuiltUpChassis.jpg)
+
+![3dprint](/Post2_2018FEB28/3DprintTest.png)
+
+![electronics](/Post2_2018FEB28/Electronics.jpg)
 
 ### Software
 
