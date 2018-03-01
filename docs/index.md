@@ -37,22 +37,17 @@ double 1700mah 2s 20c batteries store significantly more energy, but critically,
 | **50% Bad-Bug  **    <br>   | LiPo       | 7.2              | 1700                | 20C                       | 2S * 2 = **2S1P**     |
 
 
-
-![3dprint]()
-
-![electronics](/Post2_2018FEB28/Electronics.png)
-
-{::nomarkdown}<i>foo</i>
+{::nomarkdown}
 <img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width = 60%>
 {:/} 
 
 
-{::nomarkdown}<i>foo</i>
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/3DprintTest.png" width = 60%>
+{::nomarkdown}
+<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/3DprintTest.png" width = 80%>
 {:/} 
 
-{::nomarkdown}<i>foo</i>
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/Electronics.png" width = 60%>
+{::nomarkdown}
+<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/Electronics.jpg" width = 60%>
 {:/} 
 
 
