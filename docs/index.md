@@ -18,9 +18,9 @@ In both areas, the official project documentation is *outstanding*, and I will j
  [Project instructions are here](http://docs.donkeycar.com/). 
 
 
-### Hardware
+## Hardware
 
-1. Chassis
+### Chassis
 
 Here is the vehicle, in the nude;
 ![chassis](/Post2_2018FEB28/OriginalChassis.jpg)
@@ -36,7 +36,7 @@ In a later stage, I would like to apply this additive layering technique using l
 <img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/3DprintTest.png" width = 100%>
 {:/} 
 
-2. Electrical systems 
+### Electrical systems 
 
 As mentioned in the first post, the main difference in chassis, compared to the 'stock' car, is the battery pack. In this case, the 
 double 1700mah 2s 20c batteries store significantly more energy, but critically, also have a higher discharge rate, which is represented by the **C-Rating**; 
@@ -61,7 +61,7 @@ The figure below presents the electrical connections.
 <img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/Electronics.jpg" width = 100%>
 {:/} 
 
-### Software installation
+## Software installation
 
 Thanks to the documentation and the USB disk image, installation was mostly painless. Here's a quick summary of the process, see the project page for details. 
 
@@ -80,7 +80,7 @@ Thanks to the documentation and the USB disk image, installation was mostly pain
 	a. Git-pull the donkeycar repo
 	a. Start a new car software by template ```donkey createcar --template donkey2 --path ~/d2```
 
-### Running
+## Running
 
 With the hardware and software set, the normal procedure becomes;
 1. ```source activate drive``` environment in linux
@@ -88,7 +88,7 @@ With the hardware and software set, the normal procedure becomes;
 1. Run the ```python manage.py drive``` command to start the car and web service
 1. Access the car at ```d2:8887```
 
-### ESC Programming
+## ESC Programming
 
 In my ESC, there are different settings for controlling aspects of the motor performance. These settings are programmed by simple beep-code feedback. The user manual has some mistakes in the numbering, here are the codes for reference; 
 
@@ -112,17 +112,17 @@ The interesting ones are;
 
 I experimented with several settings, but I'm not sure which ones I successfully changed, so that's on the list for later. 
 
-### Calibration
+## Calibration
 
 I followed the steps for calibration, and this is still ongoing. To keep things slow, I used the minimum range on the throttle PWM signal which caused movement. This ended up being 355 / 370 / 385 for reverse, neutral, forward. 
 
 The turning PWM signal was set to 290 / 420 for Right / Left. 
 
-### Controller problems
+## Controller problems
 
 I purchased the recommended sony dualshock sixaxis controller, but still can't get it running. There are several threads on connecting this bluetooth controller, using ```bluetoothctl``` to pair. On my setup, I couldn't get the device recognized by the ```devices``` command. Work-In-Progress. 
 
-### Summary, next steps
+## Summary, next steps
 
 So that's the next milestone. Coming up;
 1. Getting the DS3 controller working
