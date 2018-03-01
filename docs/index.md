@@ -19,58 +19,115 @@ In both areas, the official project documentation is *outstanding*, and I will j
 
 
 ### Hardware
-1. Get 
+
+1. Chassis
 
 Here is the vehicle, in the nude;
 ![chassis](/Post2_2018FEB28/OriginalChassis.jpg)
 
+And my current modifications. I chose to use cardboard for prototyping a structure. Lightweight, easy to work with, it gets the job done. Layers were glued together, and recesses were cut to hold the Raspberry Pi USB battery, and to route cables. Duct tape is my friend. 
+{::nomarkdown}
+<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width = 80%>
+{:/} 
+
+In a later stage, I would like to apply this additive layering technique using laser-cut plywood, below a snapshot of my progress in learning Fusion 360. 
+
+{::nomarkdown}
+<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/3DprintTest.png" width = 100%>
+{:/} 
+
+2. Electrical systems 
+
 As mentioned in the first post, the main difference in chassis, compared to the 'stock' car, is the battery pack. In this case, the 
-double 1700mah 2s 20c batteries store significantly more energy, but critically, also have a higher discharge rate, which is represented by the **C-Rating```. The table below lists the key parameters;
+double 1700mah 2s 20c batteries store significantly more energy, but critically, also have a higher discharge rate, which is represented by the **C-Rating**; 
 
 ```Max Current Draw = Capacity x C-Rating```
 
+Secondly, the car has twice the voltage rating compared to the original 'donkey car' stock project. These two factors lead the car to have **way too much power** to make any real autonomous driving tests possible in this early phase. 
+
+The table below lists the key parameters, and the third entry in the table is the current solution for de-powering the chassis: removing one battery from the power bank. 
 
 | Variant                              | Technology | Voltage <br> [V] | Capacity <br> [mAH] | Discharge <br> [C-Rating] | Configuration <br>[S] |
 |---------------------------------------------|------------|------------------|---------------------|---------------------------|-----------------------|
 | **'Stock' project car  <br> Exceed Magnet** | NiMh       | 7.2              | 1100                | Much less than 20C        | ?                     |
-| **HobbyKing Bad Bug**           <br>        | LiPo       | 14.4             | 3400                | More than 20C             | 2S * 2 = **4S1P**     |
+| **My car 'HobbyKing Bad Bug'**           <br>        | LiPo       | 14.4             | 3400                | More than 20C             | 2S * 2 = **4S1P**     |
 | **50% Bad-Bug  **    <br>   | LiPo       | 7.2              | 1700                | 20C                       | 2S * 2 = **2S1P**     |
 
+This is therefore my current solution. Of course, I can put the second battery in parallel instead of removing it completely from the circuit. 
+
+The figure below presents the electrical connections. 
 
 {::nomarkdown}
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width = 60%>
+<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/Electronics.jpg" width = 100%>
 {:/} 
 
-{::nomarkdown}
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/3DprintTest.png" width = 80%>
-{:/} 
+### Software installation
 
-{::nomarkdown}
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/Electronics.jpg" width = 60%>
-{:/} 
-
-
-
-
-Only set the width or height, and it will scale the other automatically. And yes you can use a percentage.
-
-
-
-### Software
+Thanks to the documentation and the USB disk image, installation was mostly painless. Here's a quick summary of the process, see the project page for details. 
 
 1. Install software to the Raspberry Pi
 	a. Write the project disk image to the SD card
-
+	a. Wrote WiFi access to ```/etc/wpa_supplicant/wpa_supplicant.conf```
+	a. Hostname remains as ```d2``` for now
+	a. Power on RPi, have a keyboard and monitor handy for troubleshooting
+	a. Test: Ping d2.local 
 1. Installing software on the host (linux on my laptop)
 	a. Tensorflow and Keras
 	a. Clone the source for the 'donkeycar' project, the python code for running the vehicle
-	a. 
+1. Testing
+	a. ```ping d2.local ```
+	a. SSH into the RPi ```ssh pi@d2.local```
+	a. Git-pull the donkeycar repo
+	a. Start a new car software by template ```donkey createcar --template donkey2 --path ~/d2```
 
+### Running
 
+With the hardware and software set, the normal procedure becomes;
+1. ```source activate drive``` environment in linux
+1. ```ssh pi@d2.local```
+1. Run the ```python manage.py drive``` command to start the car and web service
+1. Access the car at ```d2:8887```
 
+### ESC Programming
 
+In my ESC, there are different settings for controlling aspects of the motor performance. These settings are programmed by simple beep-code feedback. The user manual has some mistakes in the numbering, here are the codes for reference; 
 
-http://localhost:8887
+| #  | Beep   | Name                       | Description                                       |
+|----|--------|----------------------------|---------------------------------------------------|
+| 1  | *      | Running mode               | Enable/Disable braking, reverse                   |
+| 2  | **     | Reverse force              | 20% increments                                    |
+| 3  | ***    | Brake force                | 25% increments                                    |
+| 4  | ****   | Drag brake force           | Extra drag if coasting, in various % levels       |
+| 5  | *****  | Neutral range              | Sensitivity of stick throttle in 3/6/9/12% levels |
+| 6  | _*     | Start mode                 | Accel. at start, Very fast, Fast, Normal, Slow    |
+| 7  | _**    | Timing                     | Brushless DC step timing in 0/5/10/15/20%levels   |
+| 8  | _***   | Battery voltage protection | Keep default Li-xx 3.2V/cell                      |
+| 9  | _****  | Over-heat protection       | Keep default 110C                                 |
+| 10 | _***** | Protection mode            | Keep default 'lower power'                        |
+
+The interesting ones are;
+-	[4 - drag brake] to test slowing the car down with no throttle (glide)
+-	[5 - neutral range] since my throttle is controlled by direct input of PWM values, I should be able to tighten this range
+-	[6 - start mode] to keep the driving smooth
+
+I experimented with several settings, but I'm not sure which ones I successfully changed, so that's on the list for later. 
+
+### Calibration
+
+I followed the steps for calibration, and this is still ongoing. To keep things slow, I used the minimum range on the throttle PWM signal which caused movement. This ended up being 355 / 370 / 385 for reverse, neutral, forward. 
+
+The turning PWM signal was set to 290 / 420 for Right / Left. 
+
+### Controller problems
+
+I purchased the recommended sony dualshock sixaxis controller, but still can't get it running. There are several threads on connecting this bluetooth controller, using ```bluetoothctl``` to pair. On my setup, I couldn't get the device recognized by the ```devices``` command. Work-In-Progress. 
+
+### Summary, next steps
+
+So that's the next milestone. Coming up;
+1. Getting the DS3 controller working
+1. Tuning the calibration
+1. Sketching the deep learning network model
 
 ___
 
