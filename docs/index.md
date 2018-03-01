@@ -1,20 +1,19 @@
-https://github.com/MarcusJones/ai.drive
-
-# ai.drive
-Small scale autonomous driving by deep learning
-
-## Overall goals
+# Current goals
 
 Get a minimum viable vehicle running in a month! 
 
 - Vehicle drives autonomously between taped lines
 - Duct tape, chewing gum, and superglue allowed! 
 
-## Procurement
+[(Github Repo with source)](https://github.com/MarcusJones/ai.drive)
 
+___
 
-*As of Feb. 2, 2018.*
+# Feb. 28, 2018 - Car is moving! 
 
+___
+
+# Feb. 2, 2018 - Procurement Update
 
 Here's my experience matching the parts list with the goal being getting delivery of everything down to a week or so. 
 
@@ -36,18 +35,7 @@ The major difference being the base car. The Exceed Magnet is basically sold out
 
 Here's what I came up with;
 
-
-/branch/other_file.md)
-
-[![car](/master/docs/Post1_2018/Car1.jpg)]()
-
-[![car](/docs/Post1_2018/Car1.jpg)]()
-
-[![car](/Post1_2018/Car1.jpg)]()
-
-[![car](master/Post1_2018/Car1.jpg)]()
-
-|  [![car](/docs/Post1_2018/Car1.jpg)]() |  [![Chassis](/Post1_2018/Chassis.jpg)]() | 
+|  ![car](/Post1_2018FEB02/Car1.jpg) |  ![chassis](/Post1_2018FEB02/Chassis.jpg) | 
 |:---:|:---:|
 | Car | Chassis |
 
