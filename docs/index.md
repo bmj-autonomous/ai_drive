@@ -7,6 +7,21 @@ Get a minimum viable vehicle running in a month!
 
 [(Github Repo with source)](https://github.com/MarcusJones/ai.drive)
 
+
+___
+
+# Mar. 6, 2018 -  
+
+## Sony DS3 controller operational
+
+After a few hours going through all the commands several times, I somehow got the controller to communicate via BlueTooth with the car. 
+
+```
+user@laptop2 ~ $ bluetoothctl
+[NEW] Controller 58:91:CF:1C:30:17 laptop2 [default]
+[NEW] Device FC:62:B9:3B:B3:B5 PLAYSTATION(R)3 Controller
+```
+
 ___
 
 # Feb. 28, 2018 - It's alive! 
