@@ -10,10 +10,9 @@ Get a minimum viable vehicle running in a month!
 
 ___
 
-# Mar. 6, 2018 -  
+# Mar. 6, 2018 - Sony DS3 controller operational
 
-## Sony DS3 controller operational
-
+## Connection debugging
 After a few hours going through all the commands several times, I somehow got 
 the controller to communicate via BlueTooth with the car.
 
@@ -28,7 +27,44 @@ This provided the necessary verifcation to show that the controller was function
 correct model. 
 
 After reading several articles online, there was mention of power connections, 
-so instead of running from  
+so instead of running from the battery pack, I connected to a wall USB adapter 
+and started debugging with monitor and keyboard connected. Either the power 
+supply, or simply the act of reconnecting the power, resulted in recognition
+of the device. 
+
+After so much time debugging this problem, I learned of several tools for 
+checking bluetooth and USB in linux;
+
+```bluetoothctl``` - Utility for scanning and managing connections at CLI
+```lsusb``` - List USB devices
+```service bluetooth status``` - Status of bluetooth
+```dmesg | grep -i bluetooth``` - Linux <> hardware messages related to bluetooth 
+```ls -a /dev/input/``` - List mounted input devices, check for js0
+```vi /var/log/syslog``` - View the Linux system log file
+
+I also used the joystick (```apt install joystick```) utility for verifying 
+joystick signals;  
+
+```jstest /dev/input/js0``` - Raw RAM IO map for this device
+
+ 
+## Calibration
+
+The PWM signal is controlled in the ```config.py``` file on the Pi. Two 
+parameters influence the throttle signal - the calibrated maxium, which I set at
+390, and the joystick throttle multiplier, which I incrementally increased from 
+0.50 to 0.95, searching for the **minimum** speed for my current hardware configuration. 
+In the future, I will set the PWM maximum calibration to the real maximum PWM 
+signal, and use the multipliers to control the safe speed for my application. 
+
+Here is the summary of the configuration parameters; 
+```
+THROTTLE_CHANNEL = 0
+THROTTLE_FORWARD_PWM = 390
+THROTTLE_STOPPED_PWM = 370
+THROTTLE_REVERSE_PWM = 350
+JOYSTICK_MAX_THROTTLE = 0.95
+```
 
 
 ___

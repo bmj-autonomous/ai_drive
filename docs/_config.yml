@@ -1,4 +1,5 @@
-theme: jekyll-theme-midnight
+#theme: jekyll-theme-midnight
+
 
 title: [ai.drive()]
 description: [Autonomous Driving with Deep Learning and Raspberry Pi]
