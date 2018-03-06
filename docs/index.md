@@ -10,15 +10,45 @@ Get a minimum viable vehicle running in a month!
 ___
 
 # Mar. 6, 2018 - Cats and Dogs
+
+What makes a cat a cat? How would you define dogness in contrast to catness? 
+
 ![catsdogssample](/Post4_2018MAR06/catsdogs.jpg)
-![30epoch](/Post4_2018MAR06/CatsDogs 30 epochs.jpg)
-![10epoch](/Post4_2018MAR06/CatsDogs 10 Epoch.jpg)
+
+What relevance does this have to ai.drive()?
+ 
+Let's rephrase the question: 
+
+![leftright](/Post4_2018MAR06/left.jpg)
+
+How does a machine know left from right? With the progress on hardware, it's
+time to shift focus on the software and Machine Learning problem. To warm up, I'm
+spending some time on my favourite Machine Learning problem; Cats vs. Dogs!  
+
+Using ```keras```, I am buidling a basic neural network for classification; 
+
+![model](/Post4_2018MAR06/modelTB.jpg)
+
+And executing some basic training runs on a subset of the data; 
+ 
 ![trainingexample](/Post4_2018MAR06/Training example.jpg)
+
+The results of a longer training run over 30 epochs are presented below. 
+
+![30epoch](/Post4_2018MAR06/CatsDogs 30 epochs.jpg)
+
+
+
+
+
+
+
+
 
 
 ___
 
-# Mar. 6, 2018 - Sony DS3 controller operational
+# Mar. 5, 2018 - Sony DS3 controller operational
 
 ## Connection debugging
 After a few hours going through all the commands several times, I somehow got 
