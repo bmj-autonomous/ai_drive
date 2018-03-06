@@ -1,6 +1,4 @@
-# AI.Drive()
-
-## Current goals
+# Current goals
 
 Get a minimum viable vehicle running in a month! 
 
@@ -11,7 +9,7 @@ Get a minimum viable vehicle running in a month!
 
 ___
 
-# Mar. 6, 2018 - Sony DS3 controller operational
+# Mar. 6, 2018 - Cats and Dogs
 
 
 ___
