@@ -14,13 +14,22 @@ ___
 
 ## Sony DS3 controller operational
 
-After a few hours going through all the commands several times, I somehow got the controller to communicate via BlueTooth with the car. 
+After a few hours going through all the commands several times, I somehow got 
+the controller to communicate via BlueTooth with the car.
 
+To test the controller, I tried connecting it to my laptop. Running the 
+```bluetoothctl``` utility gave immediate results;
 ```
 user@laptop2 ~ $ bluetoothctl
 [NEW] Controller 58:91:CF:1C:30:17 laptop2 [default]
 [NEW] Device FC:62:B9:3B:B3:B5 PLAYSTATION(R)3 Controller
 ```
+This provided the necessary verifcation to show that the controller was functional and the 
+correct model. 
+
+After reading several articles online, there was mention of power connections, 
+so instead of running from  
+
 
 ___
 
