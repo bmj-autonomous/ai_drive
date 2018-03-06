@@ -28,7 +28,7 @@ spending some time on my favourite Machine Learning problem; Cats vs. Dogs!
 Using the Python ```keras``` package, I am buidling a basic neural network for classification; 
 
 {::nomarkdown}
-<img src="https://marcusjones.github.io/ai.drive/Post4_2018MAR06/modelTB.jpg" width = 70%>
+<img src="https://marcusjones.github.io/ai.drive/Post4_2018MAR06/modelTB.jpg" width = 60%>
 {:/} 
 
 And executing some basic training runs on a subset of the data; 
@@ -39,14 +39,26 @@ The results of a longer training run over 30 epochs are presented below.
 
 ![30epoch](/Post4_2018MAR06/CatsDogs 30 epochs.jpg)
 
+Here we see the classic curves for **loss** and **accuracy** over the Epochs.  
 
+The binary cross-entropy loss, or log loss, measures the performance of a classification 
+model whose output is a probability. A perfect model would have a log loss of 0. 
 
+The accuracy calculates how often the predictions match the labels (correct 
+classification)
 
+These metrics are plotted for the **training data**, which is used fit the model, 
+and the **cross-validation data**, which is used as a 'sanity check' to verify
+that the model is not over-fitting. The final data-set, the **test data** is only 
+seen at the end or training, and is used to calculate the final performance of
+the model. 
 
+The current task is to gain more experience in training and evaluating models,
+augmenting and removing data, changing network architecture, and using different
+models and metrics. 
 
-
-
-
+To accomplish this, I am moving my code out of Jupyter Lab into a new python package, 
+which is accessuble at the present github repository.   
 
 ___
 
