@@ -10,6 +10,11 @@ Get a minimum viable vehicle running in a month!
 ___
 
 # Mar. 6, 2018 - Cats and Dogs
+![catsdogssample](/Post4_2018MAR06/catsdogs.jpg)
+![30epoch](/Post4_2018MAR06/CatsDogs 30 epochs.jpg)
+![10epoch](/Post4_2018MAR06/CatsDogs 10 Epoch.jpg)
+![trainingexample](/Post4_2018MAR06/Training example.jpg)
+
 
 
 ___
