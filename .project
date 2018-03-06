@@ -3,9 +3,16 @@
 	<name>ai.drive</name>
 	<comment></comment>
 	<projects>
+		<project>py_ExergyUtilities</project>
 	</projects>
 	<buildSpec>
+		<buildCommand>
+			<name>org.python.pydev.PyDevBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.python.pydev.pythonNature</nature>
 	</natures>
 </projectDescription>
