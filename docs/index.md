@@ -1,4 +1,6 @@
-# Current goals
+# AI.Drive()
+
+## Current goals
 
 Get a minimum viable vehicle running in a month! 
 
@@ -36,10 +38,15 @@ After so much time debugging this problem, I learned of several tools for
 checking bluetooth and USB in linux;
 
 ```bluetoothctl``` - Utility for scanning and managing connections at CLI
+
 ```lsusb``` - List USB devices
+
 ```service bluetooth status``` - Status of bluetooth
-```dmesg | grep -i bluetooth``` - Linux <> hardware messages related to bluetooth 
+
+```dmesg | grep -i bluetooth``` - Linux <> hardware messages related to bluetooth
+ 
 ```ls -a /dev/input/``` - List mounted input devices, check for js0
+
 ```vi /var/log/syslog``` - View the Linux system log file
 
 I also used the joystick (```apt install joystick```) utility for verifying 
