@@ -19,15 +19,17 @@ What relevance does this have to ai.drive()?
  
 Let's rephrase the question: 
 
-![leftright](/Post4_2018MAR06/left.jpg)
+![leftright](/Post4_2018MAR06/leftright.jpg)
 
 How does a machine know left from right? With the progress on hardware, it's
 time to shift focus on the software and Machine Learning problem. To warm up, I'm
 spending some time on my favourite Machine Learning problem; Cats vs. Dogs!  
 
-Using ```keras```, I am buidling a basic neural network for classification; 
+Using the Python ```keras``` package, I am buidling a basic neural network for classification; 
 
-![model](/Post4_2018MAR06/modelTB.jpg)
+{::nomarkdown}
+<img src="https://marcusjones.github.io/ai.drive/Post4_2018MAR06/modelTB.jpg" width = 70%>
+{:/} 
 
 And executing some basic training runs on a subset of the data; 
  
@@ -118,7 +120,7 @@ There were two main areas of progress so far; hardware and software.
 
 In both areas, the official project documentation is *outstanding*, and I will just summarize and highlight the differences and challenges. 
 
- [Project instructions are here](http://docs.donkeycar.com/). 
+ [Instructions for the 'DonkeyCar' community are here](http://docs.donkeycar.com/). 
 
 
 ## Hardware
@@ -126,7 +128,10 @@ In both areas, the official project documentation is *outstanding*, and I will j
 ### Chassis
 
 Here is the vehicle, in the nude;
-![chassis](/Post2_2018FEB28/OriginalChassis.jpg)
+
+{::nomarkdown}
+<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/OriginalChassis.jpg" width = 70%>
+{:/} 
 
 And my current modifications. I chose to use cardboard for prototyping a structure. Lightweight, easy to work with, it gets the job done. Layers were glued together, and recesses were cut to hold the Raspberry Pi USB battery, and to route cables. Duct tape is my friend. 
 {::nomarkdown}
