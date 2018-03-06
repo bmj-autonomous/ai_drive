@@ -16,7 +16,6 @@ ___
 ![trainingexample](/Post4_2018MAR06/Training example.jpg)
 
 
-
 ___
 
 # Mar. 6, 2018 - Sony DS3 controller operational
