@@ -9,6 +9,10 @@ Get a minimum viable vehicle running in a month!
 
 [(Github Repo with source)](https://github.com/MarcusJones/ai.drive)
 
+___
+
+# Mar. 6, 2018 - Sony DS3 controller operational
+
 
 ___
 
