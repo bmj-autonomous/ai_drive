@@ -11,6 +11,32 @@ ___
 
 # Mar. 6, 2018 - Cats and Dogs
 
+batch_size: Integer or None. Number of samples per gradient update. If unspecified, it will default to 32.
+
+epochs: Integer. Number of epochs to train the model. 
+An epoch is an iteration over the entire x and y data provided. 
+Note that in conjunction with initial_epoch, epochs is to be understood as 
+"final epoch". The model is not trained for a number of iterations given by 
+epochs, but merely until the epoch of index epochs is reached.
+
+steps_per_epoch: Total number of steps (batches of samples) before declaring 
+one epoch finished and starting the next epoch. When training with input 
+tensors such as TensorFlow data tensors, the default None is equal to the 
+number of samples in your dataset divided by the batch size, or 1 if that 
+cannot be determined.
+
+```
+history = model.fit_generator(
+    train_generator,
+    steps_per_epoch = 3,
+    epochs=2,
+    validation_data = validation_generator,
+    validation_steps = 2,
+    verbose=0,
+    callbacks=callbacks
+    )
+```
+
 What makes a cat a cat? How would you define dogness in contrast to catness? 
 
 ![catsdogssample](/Post4_2018MAR06/catsdogs.jpg)
