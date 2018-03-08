@@ -82,21 +82,25 @@ def get_data_set(base_path):
     dict_data_path['subdirs'] = subdirs
 
 
-    logging.debug("Found [train, test, val] in {}".format(base_path))
+    logging.debug("Found {} in {}".format(dict_data_path['subdirs'],base_path))
     
     # Get the classes
     classdirsall = list()
     for subdir in subdirs:
-        subpath = os.path.join(base_path,subdir)
-        
-        classdirs = [thisclass for thisclass in os.listdir(subpath) if  
-                     os.path.isdir(os.path.join(subpath,thisclass))]
-        
-        classdirsall.append(classdirs)
-
-    compare = [x >= y for i,x in enumerate(classdirsall) for j,y in enumerate(classdirsall) if i > j]
+        if subdir != 'test':
+            print(subdir)
+            subpath = os.path.join(base_path,subdir)
+            
+            classdirs = [thisclass for thisclass in os.listdir(subpath) if  
+                         os.path.isdir(os.path.join(subpath,thisclass))]
+            
+            classdirsall.append(classdirs)
+    #[classes.pop() for classes in classdirsall if len(classdirsall)==0]
     
-    assert all(compare), "Mismatch"
+    # Make sure all the classes are consistent
+    compare = [x >= y for i,x in enumerate(classdirsall) for j,y in enumerate(classdirsall) if i > j]
+    assert all(compare), f"Class mismatch in {classdirsall}"
+    
     classes = classdirsall.pop()
     logging.debug("Found {} classes: {}".format(len(classes),classes))
     dict_data_path['classes'] = classes
