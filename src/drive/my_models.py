@@ -15,11 +15,11 @@ def get_model():
     model.add(ks.layers.Conv2D(64, (3,3), activation = "relu"))
     model.add(ks.layers.MaxPooling2D(2,2))
     
-    #model.add(ks.layers.Conv2D(128, (3,3), activation = "relu"))
-    #model.add(ks.layers.MaxPooling2D(2,2))
+    model.add(ks.layers.Conv2D(128, (3,3), activation = "relu"))
+    model.add(ks.layers.MaxPooling2D(2,2))
     
-    #model.add(ks.layers.Conv2D(128, (3,3), activation = "relu"))
-    #model.add(ks.layers.MaxPooling2D(2,2))
+    model.add(ks.layers.Conv2D(128, (3,3), activation = "relu"))
+    model.add(ks.layers.MaxPooling2D(2,2))
     
     model.add(ks.layers.Flatten()) # This is just a reshape!
     

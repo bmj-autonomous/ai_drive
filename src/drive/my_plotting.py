@@ -2,6 +2,9 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 import logging 
+import matplotlib.image as mpimg 
+
+
 
 def plot_sample(data_dict):
     display_images = list()

@@ -1,5 +1,3 @@
-"""
-
 '''
 Created on Mar 8, 2018
 
@@ -7,6 +5,7 @@ Created on Mar 8, 2018
 '''
 import keras as ks
 import logging
+import keras.preprocessing.image
 
 def get_train_generator_aug():
     # Training generator - Augmentation
@@ -19,13 +18,13 @@ def get_train_generator_aug():
                                                   verbose=0,
                                                   horizontal_flip=True)
 
-def get_validation_generator(directory):
+def get_validation_generator(directory,batch_size):
     # Validation images
     validation_datagen = ks.preprocessing.image.ImageDataGenerator(rescale=1/255)
     validation_generator = validation_datagen.flow_from_directory(
         directory,
         target_size = (150,150),
-        batch_size = 20,
+        batch_size = batch_size,
         class_mode = "binary",
     )
     
@@ -37,14 +36,14 @@ def get_validation_generator(directory):
     
     return validation_generator
 
-def get_train_generator_simple(directory):
+def get_train_generator_simple(directory,batch_size):
     train_datagen = ks.preprocessing.image.ImageDataGenerator(rescale=1/255)
     # Training images
     
     train_generator = train_datagen.flow_from_directory(
         directory,
         target_size = (150,150),
-        batch_size = 20,
+        batch_size = batch_size,
         class_mode = "binary",
     );
     
@@ -60,5 +59,3 @@ def get_train_generator_simple(directory):
 
 if __name__ == '__main__':
     pass
-    
-"""

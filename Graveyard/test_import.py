@@ -7,7 +7,8 @@ Created on Mar 8, 2018
 import os
 print(os.sys.path)
 
-from . import foo
+#from . import foo
+import drive
 
 
 #if __name__ == '__main__':

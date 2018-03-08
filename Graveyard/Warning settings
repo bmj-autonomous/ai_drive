@@ -1,0 +1,7 @@
+# Disable TensorFlow warnings
+# warnings.filterwarnings("ignore", 'FutureWarning')
+# warnings.filterwarnings("ignore", 'DeprecationWarning')
+# 
+# warnings.filterwarnings("ignore")
+# 
+# os.environ['TF_CPP_MIN_LOG_LEVEL']='2'

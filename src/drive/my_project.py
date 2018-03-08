@@ -60,6 +60,7 @@ def add_project_logger(logger,path_proj):
     logformat = logging.Formatter("%(asctime)s - %(levelno)-3s - %(module)-20s  %(funcName)-30s: %(message)s")
     fh.setFormatter(logformat)
     logger.addHandler(fh)
+    return logger 
 
 def get_next_run_dir(path_proj):
     # List directories in this project
