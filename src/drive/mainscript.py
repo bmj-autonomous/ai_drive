@@ -11,7 +11,7 @@ from config.config import *
 import logging.config
 
 import yaml as yaml
-from drive import my_generators
+#from drive import my_generators
 log_config = yaml.load(open(ABSOLUTE_LOGGING_PATH, 'r'))
 logging.config.dictConfig(log_config)
 
@@ -58,7 +58,7 @@ import keras as ks
 #import ExergyUtilities as xrg
 import ExergyUtilities.util_path
 
-import drive as drive
+
 # import filemanager
 # import project
 # import my_callbacks
@@ -78,14 +78,18 @@ logging.debug("Project path: {}".format(PROJECT_PATH))
 #===============================================================================
 warnings.filterwarnings("default")
 
-from . import foo
-print(foo)
+
+#from . import my_generatorsXX
+#from . import foo
+#print(foo)
 print(os.sys.path)
 #print(drive.my_models)
-print(drive.foo)
-print(drive.my_generators)
-print(drive.my_generators.get_train_generator_simple)
-print(drive.foo)
+#print(drive.my_generators)
+print(drive.my_generatorsXX)
+
+#print(drive.foo)
+#print(drive.my_generators.get_train_generator_simple)
+#print(drive.foo)
 #print(drive.my_project2)
 raise
 
