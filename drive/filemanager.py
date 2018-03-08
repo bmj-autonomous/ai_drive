@@ -14,8 +14,8 @@ import yaml as yaml
 log_config = yaml.load(open(ABSOLUTE_LOGGING_PATH, 'r'))
 logging.config.dictConfig(log_config)
 
-myLogger = logging.getLogger()
-myLogger.setLevel("DEBUG")
+#my_logger = logging.getLogger()
+#my_logger.setLevel("DEBUG")
 
 #===============================================================================
 #--- SETUP standard modules
