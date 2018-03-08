@@ -90,7 +90,7 @@ def run(path_proj):
 def start_project(project_name):
     # Check the project name and directory
     path_proj=path.join(PROJECT_PATH,project_name)
-    assert path.exists(path_proj)
+    assert path.exists(path_proj), f"{path_proj} Does not exist"
     
 
     return path_proj

@@ -104,7 +104,7 @@ def run():
     my_utilities.print_tensor_devices()
     
     # Get generators
-    batch_size = 256
+    batch_size = 64
     train_generator = my_generators.get_train_generator_simple(data_dict['train'],batch_size)
     validation_generator = my_generators.get_validation_generator(data_dict['val'],batch_size)
     
@@ -129,13 +129,15 @@ def run():
     my_log_callback = my_callbacks.MyLoggingCallback(history_file)
     
     callbacks = [checkpt_callback,history,my_callback,my_log_callback]
-        
+
+
     history = train_model(model,train_generator,validation_generator,callbacks)
     
     # Save the history object
     history_dict = copy.copy(history.__dict__)
     del history_dict['model']
     path_history = os.path.join(path_run,r"saved_model_history.json")
+    bruce
     
     with open(path_history, 'w') as fp:
         json_string = json.dump(history_dict,fp)
