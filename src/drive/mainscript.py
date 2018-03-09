@@ -57,14 +57,33 @@ logging.debug("Project path: {}".format(PROJECT_PATH))
 #--- MAIN CODE
 #===============================================================================
 
+def train_model2(model,train_generator,validation_generator,callbacks=[]):
+    logging.debug("Started training".format())
+    start_time = time.time()
+    history = model.fit_generator(
+        train_generator,
+        steps_per_epoch = 20000/50, # Batches??
+        #batch_size = 200,
+        epochs=50,
+        validation_data = validation_generator,
+        validation_steps = 5000/50,
+        verbose=0,
+        callbacks=callbacks
+        )
+    
+    print("Elapsed:", time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)))
+
+    return history
+
+
 def train_model(model,train_generator,validation_generator,callbacks=[]):
     logging.debug("Started training".format())
     start_time = time.time()
     history = model.fit_generator(
         train_generator,
-        steps_per_epoch = 100, # Batches??
+        steps_per_epoch = 2, # Batches??
         #batch_size = 200,
-        epochs=50,
+        epochs=1,
         validation_data = validation_generator,
         validation_steps = 2,
         verbose=0,
@@ -74,6 +93,7 @@ def train_model(model,train_generator,validation_generator,callbacks=[]):
     print("Elapsed:", time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)))
 
     return history
+
 
 def add_project_logger(logger,path_proj):
     fh = logging.FileHandler(filename=os.path.join(path_proj, 'log.txt'))
@@ -104,7 +124,8 @@ def run():
     my_utilities.print_tensor_devices()
     
     # Get generators
-    batch_size = 64
+    batch_size = 50 
+    
     train_generator = my_generators.get_train_generator_simple(data_dict['train'],batch_size)
     validation_generator = my_generators.get_validation_generator(data_dict['val'],batch_size)
     
@@ -137,7 +158,6 @@ def run():
     history_dict = copy.copy(history.__dict__)
     del history_dict['model']
     path_history = os.path.join(path_run,r"saved_model_history.json")
-    bruce
     
     with open(path_history, 'w') as fp:
         json_string = json.dump(history_dict,fp)

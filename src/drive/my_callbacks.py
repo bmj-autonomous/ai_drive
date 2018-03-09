@@ -6,7 +6,7 @@ Created on Mar 7, 2018
 
 import logging
 import keras as ks
-
+import json
 
 #checkpoint = ks.callbacks.ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
 class MyLoggingCallback(ks.callbacks.Callback):
@@ -18,12 +18,18 @@ class MyLoggingCallback(ks.callbacks.Callback):
         self.filename = filename
 
     def on_epoch_end(self, epoch, logs={}):
-        msg = "{Epoch: %i} %s" % (epoch, ", ".join("%s: %f" % (k, v) for k, v in logs.items()))
-        msg += "\n"
+        items = [('epoch', epoch)] + [(k, v) for k, v in logs.items()]
+        
+        #print(items)
+        #json_items = json.dumps(items) 
+        #raise
+        #msg = "{Epoch: %i} %s" % (epoch, ", ".join("%s: %f" % (k, v) for k, v in logs.items()))
+        #msg += "\n"
         #self.print_fcn(msg)
         #with open()
-        with open(self.filename, "a") as myfile:
-            myfile.write(msg)
+        
+        with open(self.filename, "w") as outfile:
+            json.dump(items, outfile)
 
 
 
