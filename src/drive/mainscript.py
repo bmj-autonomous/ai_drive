@@ -57,7 +57,7 @@ logging.debug("Project path: {}".format(PROJECT_PATH))
 #--- MAIN CODE
 #===============================================================================
 
-def train_model2(model,train_generator,validation_generator,callbacks=[]):
+def train_model(model,train_generator,validation_generator,callbacks=[]):
     logging.debug("Started training".format())
     start_time = time.time()
     history = model.fit_generator(
@@ -74,26 +74,6 @@ def train_model2(model,train_generator,validation_generator,callbacks=[]):
     print("Elapsed:", time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)))
 
     return history
-
-
-def train_model(model,train_generator,validation_generator,callbacks=[]):
-    logging.debug("Started training".format())
-    start_time = time.time()
-    history = model.fit_generator(
-        train_generator,
-        steps_per_epoch = 2, # Batches??
-        #batch_size = 200,
-        epochs=1,
-        validation_data = validation_generator,
-        validation_steps = 2,
-        verbose=0,
-        callbacks=callbacks
-        )
-    
-    print("Elapsed:", time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)))
-
-    return history
-
 
 def add_project_logger(logger,path_proj):
     fh = logging.FileHandler(filename=os.path.join(path_proj, 'log.txt'))
@@ -138,11 +118,18 @@ def run():
     with open(json_path, "w") as json_file:
         json_file.write(model_json)
     logging.debug("Saved model to {}".format(json_path))
-        
+    # Plot the model
+    my_plotting.image_model(path_run,model)
+    
+    
     # Save the weights at each epoch
     weight_filename="weights-epoch{epoch:02d}-{val_acc:.2f}.hdf5"
     weight_path = os.path.join(path_run,weight_filename)
-    checkpt_callback = ks.callbacks.ModelCheckpoint(weight_path, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
+    checkpt_callback = ks.callbacks.ModelCheckpoint(weight_path, 
+                                                    monitor='val_acc', 
+                                                    verbose=1, 
+                                                    save_best_only=True, 
+                                                    mode='max')
     
     # Callbacks
     history = ks.callbacks.History()

@@ -45,13 +45,14 @@ class MyCallback(ks.callbacks.Callback):
  
 
     def on_epoch_begin(self, epoch, logs={}):
-        logging.debug("Epoch {}".format(epoch))
+        logging.debug("Epoch {} {}".format(epoch,logs))
         
         return
  
     def on_batch_end(self, batch, logs={}):
         #self.losses.append(logs.get('loss'))
         logging.debug("\tBatch {} {}".format(batch,logs))
+        pass
 
         
     def on_epoch_end(self, epoch, logs={}):

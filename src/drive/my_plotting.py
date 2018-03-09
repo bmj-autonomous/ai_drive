@@ -3,8 +3,22 @@ import os
 import matplotlib.pyplot as plt
 import logging 
 import matplotlib.image as mpimg 
+import keras as ks
+#import pydot
+#import graphviz
 
+def image_model(path_save,model):
+    this_path = os.path.join(path_save,'modelLRnamed.png')
+    ks.utils.plot_model(model, to_file=this_path, show_shapes=True, show_layer_names=True, rankdir='LR')
+    this_path = os.path.join(path_save,'modelTBnamed.png')
+    ks.utils.plot_model(model, to_file=this_path, show_shapes=True, show_layer_names=True, rankdir='TB')
 
+    this_path = os.path.join(path_save,'modelLR.png')
+    ks.utils.plot_model(model, to_file=this_path, show_shapes=True, show_layer_names=False, rankdir='LR')
+    this_path = os.path.join(path_save,'modelTB.png')
+    ks.utils.plot_model(model, to_file=this_path, show_shapes=True, show_layer_names=False, rankdir='TB')
+    
+    logging.debug("Saved model images to {}".format(path_save))
 
 def plot_sample(data_dict):
     display_images = list()
