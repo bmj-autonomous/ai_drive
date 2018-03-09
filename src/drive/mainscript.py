@@ -108,13 +108,15 @@ def run():
     project_name='catdog1'
     
     path_proj = my_project.start_project(project_name)
-    
+
+    path_run = my_project.get_next_run_dir(path_proj)
+
     # Add the project logger
-    add_project_logger(my_logger,path_proj)
+    add_project_logger(my_logger,path_run)
+
     logging.debug("Project base: {}".format(PROJECT_PATH))
     logging.debug("Started project {}".format(path_proj))
-    
-    path_run = my_project.get_next_run_dir(path_proj)
+    logging.debug("Started run {}".format(path_run))
     
     data_root = os.path.join(DATA_PATH,'cats_dogs_all')
     
