@@ -7,7 +7,7 @@ import keras as ks
 import logging
 import keras.preprocessing.image
 
-def get_train_generator_aug():
+def get_train_generator_aug(directory,batch_size):
     # Training generator - Augmentation
     train_datagen = ks.preprocessing.image.ImageDataGenerator(rescale=1/255,
                                                   rotation_range = 40,
@@ -17,6 +17,21 @@ def get_train_generator_aug():
                                                   zoom_range= 0.2,
                                                   verbose=0,
                                                   horizontal_flip=True)
+    
+    train_generator = train_datagen.flow_from_directory(
+        directory,
+        target_size = (150,150),
+        batch_size = batch_size,
+        class_mode = "binary",
+    );
+    
+    logging.debug("Training with augmentation: {} files over {} classes, resized to {}".format(
+        len(train_generator.filenames),
+        train_generator.num_classes,
+        train_generator.target_size,
+        ))
+
+    return train_generator
 
 def get_validation_generator(directory,batch_size):
     # Validation images
