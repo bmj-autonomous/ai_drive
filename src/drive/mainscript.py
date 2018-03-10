@@ -180,6 +180,6 @@ def run():
     
 if __name__ == "__main__":
     for i in range(3):
-        print(4)
-    #run()
+        print(i)
+        run()
     
