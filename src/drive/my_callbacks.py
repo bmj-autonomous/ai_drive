@@ -28,9 +28,9 @@ class MyLoggingCallback(ks.callbacks.Callback):
         #self.print_fcn(msg)
         #with open()
         
-        with open(self.filename, "w") as outfile:
+        with open(self.filename, "a") as outfile:
             json.dump(items, outfile)
-
+            outfile.write('\n')
 
 
 class MyCallback(ks.callbacks.Callback):

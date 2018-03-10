@@ -57,6 +57,28 @@ logging.debug("Project path: {}".format(PROJECT_PATH))
 #--- MAIN CODE
 #===============================================================================
 
+def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
+    logging.debug("Started training".format())
+    start_time = time.time()
+    history = model.fit_generator(
+        train_generator,
+        #steps_per_epoch = 20000/50, # Batches??
+        steps_per_epoch = 2, # Batches??
+        #batch_size = 200,
+        #epochs=50,
+        epochs=3,
+        validation_data = validation_generator,
+        #validation_steps = 5000/50,
+        validation_steps = 3,
+        verbose=0,
+        callbacks=callbacks
+        )
+    
+    print("Elapsed:", time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)))
+
+    return history
+
+
 def train_model(model,train_generator,validation_generator,callbacks=[]):
     logging.debug("Started training".format())
     start_time = time.time()
