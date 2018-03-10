@@ -130,7 +130,10 @@ def run():
     # Get generators
     batch_size = 50 
     
-    train_generator = my_generators.get_train_generator_simple(data_dict['train'],batch_size)
+    #train_generator = my_generators.get_train_generator_simple(data_dict['train'],batch_size)
+    
+    train_generator = my_generators.get_train_generator_aug(data_dict['train'],batch_size)
+
     validation_generator = my_generators.get_validation_generator(data_dict['val'],batch_size)
     
     # Get model, and save it
@@ -176,5 +179,7 @@ def run():
     logging.debug("Saved history.__dict__ to {}".format(path_history))
     
 if __name__ == "__main__":
+    for i in range(3):
+        print(4)
+    #run()
     
-    run()
