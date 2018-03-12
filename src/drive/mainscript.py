@@ -106,7 +106,7 @@ def add_project_logger(logger,path_proj):
     return logger 
 
     
-def run():
+def run(dropout):
     project_name='catdog1'
     
     path_proj = my_project.start_project(project_name)
@@ -137,7 +137,7 @@ def run():
     validation_generator = my_generators.get_validation_generator(data_dict['val'],batch_size)
     
     # Get model, and save it
-    model = my_models.get_model()
+    model = my_models.get_model_2xconv_vary_drop(dropout)
     json_path = os.path.join(path_run,r"saved_model_architecture.json")
     model_json = model.to_json()
     with open(json_path, "w") as json_file:
@@ -179,7 +179,8 @@ def run():
     logging.debug("Saved history.__dict__ to {}".format(path_history))
     
 if __name__ == "__main__":
-    for i in range(3):
-        print(i)
-        run()
+    dropout = [0.3, 0.5, 0.7]
+    for this_drop in dropout:
+        print(this_drop)
+        run(this_drop)
     
