@@ -4,9 +4,11 @@ Created on Mar 8, 2018
 @author: batman
 '''
 import keras as ks
-
+import logging
 def get_model():
-    
+    dropout = 0.5
+    logging.debug("Model with dropout {}".format(dropout))
+
     model = ks.models.Sequential()
 
     model.add(ks.layers.Conv2D(32, (3,3), activation = "relu", input_shape=(150,150,3)))
@@ -23,7 +25,7 @@ def get_model():
     
     model.add(ks.layers.Flatten()) # This is just a reshape!
     
-    model.add(ks.layers.Dropout(0.5))
+    model.add(ks.layers.Dropout(dropout))
     
     model.add(ks.layers.Dense(512,activation="relu"))
     model.add(ks.layers.Dense(1,activation="sigmoid"))
@@ -40,6 +42,7 @@ def get_model():
 
 
 def get_model_2xconv_vary_drop(dropout):
+    logging.debug("Model with dropout {}".format(dropout))
     
     model = ks.models.Sequential()
 
