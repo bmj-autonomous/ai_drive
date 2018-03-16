@@ -130,9 +130,9 @@ def run(dropout):
     # Get generators
     batch_size = 50 
     
-    #train_generator = my_generators.get_train_generator_simple(data_dict['train'],batch_size)
+    train_generator = my_generators.get_train_generator_simple(data_dict['train'],batch_size)
     
-    train_generator = my_generators.get_train_generator_aug(data_dict['train'],batch_size)
+    #train_generator = my_generators.get_train_generator_aug(data_dict['train'],batch_size)
 
     validation_generator = my_generators.get_validation_generator(data_dict['val'],batch_size)
     
