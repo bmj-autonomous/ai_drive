@@ -56,6 +56,8 @@ logging.debug("Project path: {}".format(PROJECT_PATH))
 #===============================================================================
 #--- MAIN CODE
 #===============================================================================
+PROJECT_PATH
+DATA_PATH
 
 def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
     logging.debug("Started training".format())

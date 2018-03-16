@@ -5,7 +5,7 @@ Get a minimum viable vehicle running in a month!
 - Vehicle drives autonomously between taped lines
 - Duct tape, chewing gum, and superglue allowed! 
 
-[(Github Repo with source)](https://github.com/MarcusJones/ai.drive)
+[(Github Repo with source)](https://github.com/MarcusJones/ai_drive)
 
 ___
 
@@ -54,7 +54,7 @@ spending some time on my favourite Machine Learning problem; Cats vs. Dogs!
 Using the Python ```keras``` package, I am buidling a basic neural network for classification; 
 
 {::nomarkdown}
-<img src="https://marcusjones.github.io/ai.drive/Post4_2018MAR06/modelTB.jpg" width = 60%>
+<img src="https://marcusjones.github.io/ai_drive/docs/Post4_2018MAR06/modelTB.jpg" width = 60%>
 {:/} 
 
 And executing some basic training runs on a subset of the data; 
@@ -158,7 +158,7 @@ There were two main areas of progress so far; hardware and software.
 
 In both areas, the official project documentation is *outstanding*, and I will just summarize and highlight the differences and challenges. 
 
- [Instructions for the 'DonkeyCar' community are here](http://docs.donkeycar.com/). 
+[Instructions for the 'DonkeyCar' community are here](http://docs.donkeycar.com/). 
 
 
 ## Hardware
@@ -168,18 +168,18 @@ In both areas, the official project documentation is *outstanding*, and I will j
 Here is the vehicle, in the nude;
 
 {::nomarkdown}
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/OriginalChassis.jpg" width = 70%>
+<img src="https://marcusjones.github.io/ai_drive/docs/Post2_2018FEB28/OriginalChassis.jpg" width = 70%>
 {:/} 
 
 And my current modifications. I chose to use cardboard for prototyping a structure. Lightweight, easy to work with, it gets the job done. Layers were glued together, and recesses were cut to hold the Raspberry Pi USB battery, and to route cables. Duct tape is my friend. 
 {::nomarkdown}
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width = 80%>
+<img src="https://marcusjones.github.io/ai_drive/docs/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width = 80%>
 {:/} 
 
 In a later stage, I would like to apply this additive layering technique using laser-cut plywood, below a snapshot of my progress in learning Fusion 360. 
 
 {::nomarkdown}
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/3DprintTest.png" width = 100%>
+<img src="https://marcusjones.github.io/ai_drive/docs/Post2_2018FEB28/3DprintTest.png" width = 100%>
 {:/} 
 
 ### Electrical systems 
@@ -204,7 +204,7 @@ This is therefore my current solution. Of course, I can put the second battery i
 The figure below presents the electrical connections. 
 
 {::nomarkdown}
-<img src="https://marcusjones.github.io/ai.drive/Post2_2018FEB28/Electronics.jpg" width = 100%>
+<img src="https://marcusjones.github.io/ai_drive/docs/Post2_2018FEB28/Electronics.jpg" width = 100%>
 {:/} 
 
 ## Software installation
