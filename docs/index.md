@@ -11,6 +11,8 @@ ___
 
 # Mar. 6, 2018 - Cats and Dogs
 
+```Keras.backend.clear_session()```
+
 batch_size: Integer or None. Number of samples per gradient update. If unspecified, it will default to 32.
 
 epochs: Integer. Number of epochs to train the model. 
