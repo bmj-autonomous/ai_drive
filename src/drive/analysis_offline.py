@@ -57,50 +57,87 @@ PROJECT_PATH
 DATA_PATH
 
 def get_weights(this_run_path):
-    # Get saved weights
-    weights_files = [(f,os.path.join(this_run_path,f)) for f in os.listdir(this_run_path) 
+    """Return the weights hdf5 files from a directory
+    Creates a sorted dictionary (first to last)
+    epoch
+    fname
+    path
+    size
+    """
+    # File name
+    wts_file_name = [f for f in os.listdir(this_run_path)
                      if re.match('weights-',f)]
-    length = len([i for i in weights_files])
-
     
-    # Add the sizes of the weights
+    # Total number of files
+    length = len([i for i in wts_file_name])
+    
+    # File path
+    wts_file_path = [os.path.join(this_run_path,f) for f in os.listdir(this_run_path) 
+                     if re.match('weights-',f)]
+    
+    # File sizes
     sizes = [os.path.getsize((os.path.join(this_run_path,f)))/1024/1024 
             for f in os.listdir(this_run_path) 
             if re.match('weights-',f)]
-    
+
     total_size = sum(sizes)
     if not total_size == 0:
         avg_size = sum(sizes)/length
     else:
         avg_size = 0
     
-    # Add the number of the epoch
-    #wts = analysis.get_weights(this_run_path)
-    #new_wts = 
-    for wt in wts:
-        wt = list(wt)
-        wt_name = wt[0][0]
-        #print(wt_name)
-        epoch_num = re.findall(r'epoch\d+', wt_name)
-        epoch_num = re.findall(r'\d+', epoch_num[0])
-        wt.append(epoch_num)
-        
-    
+    # Epoch numbers
+    epochs = [re.findall(r'epoch\d+', f)[0] for f in wts_file_name]
+    epoch_num = [int(re.findall(r'\d+', f)[0]) for f in epochs]
+    #print(epoch_num)
+
     logging.debug("Found {} weights files, total {:.0f} MB = {:.1f} MB per file".format(
         length,total_size,avg_size
         )
     )
-    
-    weights_files = zip(weights_files,sizes)
-    return weights_files
 
-def get_architecture(this_run_path):
+    weights_files = list(zip(wts_file_name,wts_file_path,sizes,epoch_num))
+    
+    # Sort
+    weights_files.sort(key=lambda tup: tup[3])
+    
+    # Convert to dict
+    wt_dicts = list()
+    wt_dicts = [{'epoch':i[3],'fname':i[0], 'path':i[1],'size':i[2]} for i in weights_files] 
+
+    return wt_dicts
+
+
+def get_architecture_path(this_run_path):
     arch_file = [os.path.join(this_run_path,f) for f in os.listdir(this_run_path) 
              if re.match('saved_model_architecture.json$',f)]
     if arch_file: arch_file = arch_file.pop() 
     else: arch_file = None
     #print(arch_file)
     return(arch_file)
+
+
+def read_model_json(this_run_path):
+    """Read the saved model as a json string
+    """
+    path_arch = get_architecture_path(this_run_path)
+    with open(path_arch,'r') as arch_file:
+        arch_dict = json.load(arch_file)
+    
+    return arch_dict
+
+def load_model(this_run_path):
+    """Load the model and instantiate it in Keras
+    """
+    path_arch = get_architecture_path(this_run_path)
+    from keras.models import model_from_json
+    
+    with open(path_arch,'r') as arch_file:
+        loaded_model_json = arch_file.read()
+        model = model_from_json(loaded_model_json)
+        
+    return model
+        
 
 def get_history(this_run_path):
     hist_file_simple = [os.path.join(this_run_path,f) for f in os.listdir(this_run_path) 
