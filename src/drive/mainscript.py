@@ -149,7 +149,7 @@ def run(dropout):
     my_plotting.image_model(path_run,model)
     
     
-    # Save the weights at each epoch
+    ## Save the weights at each epoch
     weight_filename="weights-epoch{epoch:02d}-{val_acc:.2f}.hdf5"
     weight_path = os.path.join(path_run,weight_filename)
     checkpt_callback = ks.callbacks.ModelCheckpoint(weight_path, 
@@ -158,7 +158,7 @@ def run(dropout):
                                                     save_best_only=True, 
                                                     mode='max')
     
-    # Callbacks
+    ## Callbacks
     history = ks.callbacks.History()
     my_callback = my_callbacks.MyCallback()
     history_filename = "history "+ os.path.split(path_run)[1] + ".txt"

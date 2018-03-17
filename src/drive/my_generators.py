@@ -7,6 +7,16 @@ import keras as ks
 import logging
 import keras.preprocessing.image
 
+
+def get_test_generator(directory):
+    test_datagen = ks.preprocessing.image.ImageDataGenerator(rescale=1. / 255)
+
+    test_generator = test_datagen.flow_from_directory(
+        directory,
+        #target_size = (150,150),
+        #batch_size = batch_size,
+        #class_mode = "binary",
+    );
 def get_train_generator_aug(directory,batch_size):
     # Training generator - Augmentation
     train_datagen = ks.preprocessing.image.ImageDataGenerator(rescale=1/255,
