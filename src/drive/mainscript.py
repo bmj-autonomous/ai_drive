@@ -181,7 +181,7 @@ def run(dropout):
     logging.debug("Saved history.__dict__ to {}".format(path_history))
     
 if __name__ == "__main__":
-    dropout = [0.7]
+    dropout = [0.4,0.6]
     for this_drop in dropout:
         print(this_drop)
         run(this_drop)
