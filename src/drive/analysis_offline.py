@@ -38,6 +38,9 @@ from datetime import datetime
 #--- SETUP external modules
 #===============================================================================
 import pandas as pd
+import numpy as np
+from keras import backend as K
+
 #===============================================================================
 #--- SETUP Custom modules
 #===============================================================================
