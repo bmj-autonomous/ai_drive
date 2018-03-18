@@ -8,6 +8,18 @@ import logging
 import keras.preprocessing.image
 
 
+def get_test_generator_sample(directory,batch_size):
+    test_datagen_sample = ks.preprocessing.image.ImageDataGenerator(rescale=1. / 255)
+    #print(path_test)
+    test_generator = test_datagen_sample.flow_from_directory(
+            directory,
+            target_size = (150,150),
+            batch_size = 8,
+            #class_mode = "binary",
+        );
+    return(test_generator)
+
+
 def get_test_generator(directory):
     test_datagen = ks.preprocessing.image.ImageDataGenerator(rescale=1. / 255)
 
@@ -17,6 +29,8 @@ def get_test_generator(directory):
         #batch_size = batch_size,
         #class_mode = "binary",
     );
+    
+    
 def get_train_generator_aug(directory,batch_size):
     # Training generator - Augmentation
     train_datagen = ks.preprocessing.image.ImageDataGenerator(rescale=1/255,

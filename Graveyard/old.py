@@ -84,7 +84,6 @@ for rfolder in run_folders:
     #raise
 
 
-%%script false
 def get_weights(this_run_path):
     """Return the weights hdf5 files from a directory
     Creates a sorted dictionary (first to last)
@@ -137,3 +136,52 @@ def get_weights(this_run_path):
     )    
     
     return wt_dicts
+
+
+
+def old_test_gen():
+    
+    %%script false
+    test_generator = test_datagen.flow_from_directory(
+            r'/home/batman/Dropbox/DATA/cats_dogs_all/SMALL_test',
+            target_size = (150,150),
+            batch_size = 5,
+            shuffle=False,
+            #class_mode = "binary",
+        );
+    #print(len(test_generator))
+    
+    #print(test_generator.n)
+    
+    #for i in dir (test_generator):
+    #    print(i)
+    batches = list()
+    num_batches = len(test_generator)
+    seen_files = 0
+    num_files = test_generator.n
+    
+    for i, batch in enumerate(test_generator):
+        seen_files += batch[0].shape[0]
+        print("seen {} / {}".format(seen_files,num_files))
+        
+        #print()
+        if i+1 == num_batches:
+            break
+        #raise
+        #print(batch[0].shape)
+        #batches.append(batch[0].shape)
+        #print(batch[0][0].size)
+    #print(len(batches))
+    print(seen_files)
+
+
+
+def asdf():
+    import re
+    date_re = re.compile('(?P<a_year>\d{2,4})-(?P<a_month>\d{2})-(?P<a_day>\d{2}) (?P<an_hour>\d{2}):(?P<a_minute>\d{2}):(?P<a_second>\d{2}[.\d]*)')
+    found = date_re.match('2016-02-29 12:34:56.789')
+    if found is not None:
+        print found.groupdict()
+    #{'a_year': '2016', 'a_second': '56.789', 'a_day': '29', 'a_minute': '34', 'an_hour': '12', 'a_month': '02'}
+    found.groupdict()['a_month']
+    #'02'

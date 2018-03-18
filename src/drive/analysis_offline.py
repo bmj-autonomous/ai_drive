@@ -32,11 +32,12 @@ myLogger.setLevel("DEBUG")
 import os
 import re
 import json
+from datetime import datetime
 
 #===============================================================================
 #--- SETUP external modules
 #===============================================================================
-
+import pandas as pd
 #===============================================================================
 #--- SETUP Custom modules
 #===============================================================================
@@ -55,6 +56,143 @@ import ExergyUtilities.util_path as xrg_path
 
 PROJECT_PATH
 DATA_PATH
+
+
+
+def Conv2D(params):
+    #print(params['class_name'])
+    #pprint(params['config'])
+    kernel_dim = (params['config']['kernel_size'][0])
+    filters = (params['config']['filters'])
+    return "{}, kernel {}, filters {}".format(params['class_name'],kernel_dim,filters)
+
+def MaxPooling2D(params):
+    #print(params['class_name'])    
+    #pprint(params['config'])
+    pool_size = (params['config']['pool_size'][0])
+    
+    return "{}, pool {}".format(params['class_name'],pool_size)
+
+def Flatten(params):
+    #print(params['class_name'])
+    return "{}".format(params['class_name'])
+
+def Dropout(params):
+    #print(params['class_name'])
+    #pprint(params['config'])
+    drp_rate = (params['config']['rate'])
+    return "{}, dropout {}".format(params['class_name'],drp_rate)
+    
+    
+    #raise
+def Dense(params):
+    #print(params['class_name'])
+    return "{}".format(params['class_name'])
+
+LAYER_FUNCS = {
+        'Conv2D':Conv2D,
+        'MaxPooling2D':MaxPooling2D,
+        'Flatten':Flatten,
+        'Dropout':Dropout,
+        'Dense':Dense,
+}
+
+
+
+
+def create_date(res_dict):
+    #values = ['2014', '08', '17', '18', '01', '05']
+
+    datevec = [ int(res_dict['year']),
+                int(res_dict['month']),
+                int(res_dict['day']),
+                int(res_dict['hour']),
+                int(res_dict['minute']),
+                int(res_dict['second']),
+              ]
+    
+    this_dt = datetime(*datevec)
+    return this_dt
+
+
+def parse_log_string(l):
+    """datetime, log string text, module string
+    """
+    #log_regex = re.compile(r"(?P<year>\d{2,4})-(?P<month>\d{2})-(?P<day>\d{2}) (?P<hour>\d{2}):(?P<minute>\d{2}):(?P<second>\d{2}[.\d]*).*:\s(?P<logstring>.*)")
+    #-- TODO !!!!
+    log_regex = re.compile(r"(?P<year>\d{2,4})-(?P<month>\d{2})-(?P<day>\d{2}) (?P<hour>\d{2}):(?P<minute>\d{2}):(?P<second>\d{2}),[\d]*\s-\s(?P<level>\d\d)\s*-\s(?P<module_str>.*).*:\s(?P<logstring>.*)$")
+    #log_regex = re.compile(r"(?P<year>\d{2,4})-(?P<month>\d{2})-(?P<day>\d{2}) (?P<hour>\d{2}):(?P<minute>\d{2}):(?P<second>\d{2}),[\d]*\s-\s(?P<level>\d\d)\s*-\s*(?P<modules>.*)\s:\s(?P<logstring>.*)$")
+    res = log_regex.match(l)
+    res_dict = res.groupdict()
+    
+    logstr = res_dict.pop('logstring', None)
+    module_str = res_dict.pop('module_str', None)
+        #print(res_dict)
+    this_dt = create_date(res_dict)    
+    
+    return({'dt':this_dt,'logstr':logstr,'modstr':module_str})
+
+
+def count_params(model):
+    """Uses backend 'K' count_params
+    Returns dict for Total/Trainable/Non-trainable
+    """
+    trainable_count = int(
+        np.sum([K.count_params(p) for p in set(model.trainable_weights)]))
+    non_trainable_count = int(
+        np.sum([K.count_params(p) for p in set(model.non_trainable_weights)]))
+    return {'Total':trainable_count + non_trainable_count,'Trainable':trainable_count,'Non-trainable':non_trainable_count}
+    #print('Total params: {:,}'.format(trainable_count + non_trainable_count))
+    #print('Trainable params: {:,}'.format(trainable_count))
+    #print('Non-trainable params: {:,}'.format(non_trainable_count))
+
+
+def get_log_file(this_run_path):
+    log_file = [os.path.join(this_run_path,f) for f in os.listdir(this_run_path) 
+             if re.match('^log.txt$',f)][0]
+    assert os.path.exists(log_file)
+    
+    with open(log_file) as f:
+        #for l in lines:
+            #print(l)
+        lines = f.readlines()
+        #content = [x.strip() for x in content] 
+    
+    start_time = parse_log_string(lines[0])['dt']
+    end_time = parse_log_string(lines[-1])['dt']
+    elapsed = end_time-start_time
+    finish_found = None
+    generator = None
+    #for l in lines[-100:-1]:
+    for l in lines[0:100]:        
+        l = l.strip()
+        res_dict = parse_log_string(l)
+        
+        # Get the image generator
+        if not generator: 
+            gen_regex = re.compile(r"get_train_generator")
+            generator_line = gen_regex.search(res_dict['modstr'])
+            #generator_line = gen_regex.match(res_dict['logstr'])
+            if generator_line:
+                #print(generator_line.group())
+                #print()
+                generator = res_dict['modstr']
+                #raise
+            #my_generators         
+    
+        
+        
+        # Check if finished
+        finished_regex = re.compile(r"Finished training")
+        finished_line = finished_regex.match(res_dict['logstr'])
+        if finished_line: 
+            finish_found=True
+    
+    return({'finished':finish_found,'start':start_time,'elapsed':elapsed,'generator':generator})
+    #assert(finish_found)
+
+
+
 
 def get_weights(this_run_path):
     """Return the weights hdf5 files from a directory
@@ -106,6 +244,18 @@ def get_weights(this_run_path):
     wt_dicts = [{'epoch':i[3],'fname':i[0], 'path':i[1],'size':i[2]} for i in weights_files] 
 
     return wt_dicts
+
+def get_solutions_csv(path_solutions):
+    df_solutions = pd.read_csv(path_solutions)
+    df_solutions.head()
+    #solutions.[]
+    cutoff=0.5
+    df_solutions['labelTF'] = df_solutions['label'].map(lambda x: True if x >= 0.5 else False)
+    df_solutions.set_index('id',inplace=True)
+    df_solutions.sort_index(inplace=True)
+    #df_solutions.head()
+    logging.debug("Loaded solutions from {}, {} rows".format(path_solutions,len(df_solutions)))
+    return df_solutions
 
 
 def get_architecture_path(this_run_path):
