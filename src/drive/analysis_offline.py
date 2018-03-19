@@ -148,7 +148,7 @@ def count_params(model):
     #print('Total params: {:,}'.format(trainable_count + non_trainable_count))
     #print('Trainable params: {:,}'.format(trainable_count))
     #print('Non-trainable params: {:,}'.format(non_trainable_count))
-
+    #```total_params = (filter_height * filter_width * input_image_channels + 1) * number_of_filters```
 
 def get_log_file(this_run_path):
     log_file = [os.path.join(this_run_path,f) for f in os.listdir(this_run_path) 

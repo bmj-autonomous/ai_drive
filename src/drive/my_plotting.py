@@ -60,5 +60,36 @@ def plot_sample(data_dict):
     #plt.show()
 
 
+
+def plot_hist_dict(history_dict):
+    model_title = "10 Epochs"
+    #fig = plt.figure(figsize=(5,4))
+    #fig=plt.figure(figsize=(20, 10),facecolor='white')
+
+    #f, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 5),sharey=False,facecolor='white')
+    f, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 5),sharey=False,facecolor='0.15')
+    
+    ax1.plot(history_dict['epoch'],  history_dict['history']['loss'],label="Train")
+    ax1.plot(history_dict['epoch'],  history_dict['history']['val_loss'],label="CV")
+    ax1.set_title("Loss function development - Training set vs CV set")
+    ax1.legend(loc='upper right')
+    ax1.set_xlabel('Epochs')
+    ax1.set_ylabel('Values')
+    
+    ax2.plot(history_dict['epoch'],  history_dict['history']['acc'],label="Train")
+    ax2.plot(history_dict['epoch'],  history_dict['history']['val_acc'],label="CV")
+    ax2.set_title("Accuracy development - Training set vs CV set")
+    ax2.legend(loc='upper right')
+    ax2.set_xlabel('Epochs')
+    ax2.set_ylabel('Values')
+    
+    plt.suptitle(model_title, fontsize=16)
+    
+    plt.show()
+
+#plot_hist(history_dict)
+
+
+
 if __name__ == '__main__':
     pass

@@ -28,4 +28,3 @@ def print_tensor_devices():
             dev['name'],
             dev['device_type'],
             dev['memory_limit'],            ))
-    
