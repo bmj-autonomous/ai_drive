@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import logging 
 import matplotlib.image as mpimg 
 import keras as ks
-#import pydot
+import pydot
 #import graphviz
 
 def image_model(path_save,model):

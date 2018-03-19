@@ -88,7 +88,7 @@ def get_data_set(base_path):
     classdirsall = list()
     for subdir in subdirs:
         if subdir != 'test':
-            print(subdir)
+            #print(subdir)
             subpath = os.path.join(base_path,subdir)
             
             classdirs = [thisclass for thisclass in os.listdir(subpath) if  
@@ -127,7 +127,6 @@ def get_data_set(base_path):
     logging.debug("Organized dataset paths at {}".format(base_path))
     
     print(tabulate(df, headers='keys', tablefmt='psql'))
-
 
     return(dict_data_path)
 
