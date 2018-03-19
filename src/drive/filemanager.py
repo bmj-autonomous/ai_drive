@@ -76,7 +76,7 @@ def get_data_set(base_path):
     subdirs = [thissubdir for thissubdir in os.listdir(base_path) if  
                     os.path.isdir(os.path.join(base_path,thissubdir))]
     
-    dsets = ['train', 'test', 'val']
+    dsets = ['train', 'test', 'val', 'my_test']
 
     assert all([d in subdirs for d in dsets]), f"Missing a dataset {subdirs}"
     dict_data_path['subdirs'] = subdirs
@@ -87,7 +87,7 @@ def get_data_set(base_path):
     # Get the classes
     classdirsall = list()
     for subdir in subdirs:
-        if subdir != 'test':
+        if subdir != 'test':    # Skip the 'test' directory
             #print(subdir)
             subpath = os.path.join(base_path,subdir)
             
@@ -107,7 +107,6 @@ def get_data_set(base_path):
     
     dict_data_path['folders'] = dict()
     dict_data_path['filecounts'] = dict()
-    
     
     for subdir in dict_data_path['subdirs']:
         dict_data_path['folders'][subdir] = dict()

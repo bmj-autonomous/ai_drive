@@ -20,15 +20,20 @@ def get_test_generator_sample(directory,batch_size):
     return(test_generator)
 
 
-def get_test_generator(directory):
+
+
+
+def get_test_generator(directory,batch_size):
     test_datagen = ks.preprocessing.image.ImageDataGenerator(rescale=1. / 255)
 
     test_generator = test_datagen.flow_from_directory(
         directory,
-        #target_size = (150,150),
-        #batch_size = batch_size,
-        #class_mode = "binary",
+        target_size = (150,150),
+        batch_size = batch_size,
+        class_mode = "binary",
     );
+    
+    return(test_generator)
     
     
 def get_train_generator_aug(directory,batch_size):

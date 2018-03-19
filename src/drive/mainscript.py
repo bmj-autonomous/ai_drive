@@ -34,6 +34,8 @@ import numpy as np
 #--- SETUP external modules
 #===============================================================================
 import keras as ks
+import sklearn as sk
+import sklearn.metrics
 
 #===============================================================================
 #--- SETUP Custom modules
@@ -195,9 +197,68 @@ def run(dropout, project_name, data_source_name):
     logging.debug("Finished run {}".format(os.path.split(path_run)[-1]))
     
     #--- Testing
-    test_result = my_testing.test_model(model)
+    test_df = my_testing.test_model(model,data_dict)
+    path_testing_result = os.path.join(path_run,r"saved_testing.csv")
+    with open(path_testing_result,'w') as f:
+        test_df.to_csv(f)
+        
+    logging.debug("Saved testing to {}".format(path_testing_result))
+        
+    print(test_df)
+
+    logging.debug("Finished testing {}".format(os.path.split(path_run)[-1]))
+    
+    
+    #--- Metrics
+    
+    accuracy_score = sk.metrics.accuracy_score(test_df['label'], 
+                                    test_df['label_pred'], 
+                                    normalize=True,
+                                    sample_weight=None)
+    
+    roc_auc_score = sk.metrics.roc_auc_score(y_true = test_df['label'], 
+                                                  y_score = test_df['prediction_prob'], 
+                                                  average='macro', 
+                                                  sample_weight=None)
+    
+    confusion_matrix  = sk.metrics.confusion_matrix(test_df['label'], 
+                                                    test_df['label_pred'])
+    
+    f1_score  = sk.metrics.f1_score(y_true = test_df['label'], 
+                                    y_pred = test_df['label_pred'], 
+                                    labels=None, 
+                                    pos_label=1, 
+                                    average='binary', 
+                                    sample_weight=None)
+    
+    
+    log_loss  = sk.metrics.log_loss(y_true = test_df['label'], 
+                                        y_pred = test_df['label_pred'],  
+                                        eps=1e-15, 
+                                        normalize=True, 
+                                        sample_weight=None, 
+                                        labels=None)
+    
+    
+    precision_score = sk.metrics.precision_score(y_true = test_df['label'], 
+                                        y_pred = test_df['label_pred'], 
+                                                 labels=None, 
+                                                 pos_label=1, 
+                                                 average='binary', 
+                                                 sample_weight=None)
+    
+    
+    logging.debug("accuracy_score {}".format(accuracy_score))
+    logging.debug("roc_auc_score {}".format(roc_auc_score))
+    logging.debug("confusion_matrix {}".format(confusion_matrix))
+    logging.debug("f1_score {}".format(f1_score))
+    logging.debug("log_loss {}".format(log_loss))
+    logging.debug("precision_score {}".format(precision_score))
+
+    logging.debug("Finished with metric, done {}".format(os.path.split(path_run)[-1]))
 
     
+
 if __name__ == "__main__":
     #dropout = [0,0.1,0.3.5,0.75]
     project_name='catdog2'
