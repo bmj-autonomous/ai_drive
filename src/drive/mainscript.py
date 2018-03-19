@@ -139,7 +139,7 @@ def run(dropout):
     validation_generator = my_generators.get_validation_generator(data_dict['val'],batch_size)
     
     # Get model, and save it
-    model = my_models.get_model_2xconv_vary_drop(dropout)
+    model = my_models.get_model_4xconv_vary_drop(dropout)
     json_path = os.path.join(path_run,r"saved_model_architecture.json")
     model_json = model.to_json()
     with open(json_path, "w") as json_file:
@@ -181,8 +181,11 @@ def run(dropout):
     logging.debug("Saved history.__dict__ to {}".format(path_history))
     
 if __name__ == "__main__":
-    dropout = [0.7]
+    #dropout = [0,0.1,0.3.5,0.75]
+    import numpy as np
+    dropout = np.arange(0,1,0.1)
     for this_drop in dropout:
         print(this_drop)
         run(this_drop)
+        ks.backend.clear_session()
     
