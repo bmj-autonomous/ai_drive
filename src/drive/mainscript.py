@@ -69,13 +69,13 @@ def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
     history = model.fit_generator(
         train_generator,
         #steps_per_epoch = 20000/50, # Batches??
-        steps_per_epoch = 2, # Batches??
+        steps_per_epoch = 10, # Batches??
         #batch_size = 200,
         #epochs=50,
-        epochs=1,
+        epochs=5,
         validation_data = validation_generator,
         #validation_steps = 5000/50,
-        validation_steps = 3,
+        validation_steps = 5,
         verbose=0,
         callbacks=callbacks
         )
@@ -113,6 +113,54 @@ def add_project_logger(logger,path_proj):
     fh.setFormatter(logformat)
     logger.addHandler(fh)
     return logger 
+
+
+def print_metrics(test_df):    
+    accuracy_score = sk.metrics.accuracy_score(test_df['label'], 
+                                    test_df['label_pred'], 
+                                    normalize=True,
+                                    sample_weight=None)
+    
+    roc_auc_score = sk.metrics.roc_auc_score(y_true = test_df['label'], 
+                                                  y_score = test_df['prediction_prob'], 
+                                                  average='macro', 
+                                                  sample_weight=None)
+    
+    confusion_matrix  = sk.metrics.confusion_matrix(test_df['label'], 
+                                                    test_df['label_pred'])
+    
+    f1_score  = sk.metrics.f1_score(y_true = test_df['label'], 
+                                    y_pred = test_df['label_pred'], 
+                                    labels=None, 
+                                    pos_label=1, 
+                                    average='binary', 
+                                    sample_weight=None)
+    
+    
+    log_loss  = sk.metrics.log_loss(y_true = test_df['label'], 
+                                        y_pred = test_df['label_pred'],  
+                                        eps=1e-15, 
+                                        normalize=True, 
+                                        sample_weight=None, 
+                                        labels=None)
+    
+    
+    precision_score = sk.metrics.precision_score(y_true = test_df['label'], 
+                                        y_pred = test_df['label_pred'], 
+                                                 labels=None, 
+                                                 pos_label=1, 
+                                                 average='binary', 
+                                                 sample_weight=None)
+    
+    
+    logging.debug("accuracy_score {}".format(accuracy_score))
+    logging.debug("roc_auc_score {}".format(roc_auc_score))
+    logging.debug("confusion_matrix {}".format(confusion_matrix))
+    logging.debug("f1_score {}".format(f1_score))
+    logging.debug("log_loss {}".format(log_loss))
+    logging.debug("precision_score {}".format(precision_score))
+
+
 
     
 def run(dropout, project_name, data_source_name):
@@ -210,50 +258,7 @@ def run(dropout, project_name, data_source_name):
     
     
     #--- Metrics
-    
-    accuracy_score = sk.metrics.accuracy_score(test_df['label'], 
-                                    test_df['label_pred'], 
-                                    normalize=True,
-                                    sample_weight=None)
-    
-    roc_auc_score = sk.metrics.roc_auc_score(y_true = test_df['label'], 
-                                                  y_score = test_df['prediction_prob'], 
-                                                  average='macro', 
-                                                  sample_weight=None)
-    
-    confusion_matrix  = sk.metrics.confusion_matrix(test_df['label'], 
-                                                    test_df['label_pred'])
-    
-    f1_score  = sk.metrics.f1_score(y_true = test_df['label'], 
-                                    y_pred = test_df['label_pred'], 
-                                    labels=None, 
-                                    pos_label=1, 
-                                    average='binary', 
-                                    sample_weight=None)
-    
-    
-    log_loss  = sk.metrics.log_loss(y_true = test_df['label'], 
-                                        y_pred = test_df['label_pred'],  
-                                        eps=1e-15, 
-                                        normalize=True, 
-                                        sample_weight=None, 
-                                        labels=None)
-    
-    
-    precision_score = sk.metrics.precision_score(y_true = test_df['label'], 
-                                        y_pred = test_df['label_pred'], 
-                                                 labels=None, 
-                                                 pos_label=1, 
-                                                 average='binary', 
-                                                 sample_weight=None)
-    
-    
-    logging.debug("accuracy_score {}".format(accuracy_score))
-    logging.debug("roc_auc_score {}".format(roc_auc_score))
-    logging.debug("confusion_matrix {}".format(confusion_matrix))
-    logging.debug("f1_score {}".format(f1_score))
-    logging.debug("log_loss {}".format(log_loss))
-    logging.debug("precision_score {}".format(precision_score))
+    print_metrics(test_df)
 
     logging.debug("Finished with metric, done {}".format(os.path.split(path_run)[-1]))
 
