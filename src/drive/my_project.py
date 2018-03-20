@@ -24,7 +24,7 @@ import logging
 # if __name__ == '__main__' and __package__ is None:
 #     this_path = path.dirname(path.dirname(path.abspath(__file__)))
 #     sys.path.append(this_path)
-#     logging.debug("ADDED TO PATH: ".format(this_path))
+#     logging.info("ADDED TO PATH: ".format(this_path))
 
 #===============================================================================
 #--- SETUP Standard modules
@@ -81,7 +81,7 @@ def get_next_run_dir(path_proj):
     # Make the directory
     dir_next_run = path.join(path_proj,'run'+next_digit_string)
     os.mkdir(dir_next_run)
-    logging.debug("Made next run directory at {}".format(dir_next_run))
+    logging.info("Made next run directory at {}".format(dir_next_run))
     return dir_next_run
     
 def run(path_proj):

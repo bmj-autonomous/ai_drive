@@ -54,8 +54,8 @@ from . import my_testing
 #===============================================================================
 #--- Directories and files
 #===============================================================================
-logging.debug("Data path: {}".format(DATA_PATH))
-logging.debug("Project path: {}".format(PROJECT_PATH))
+logging.info("Data path: {}".format(DATA_PATH))
+logging.info("Project path: {}".format(PROJECT_PATH))
 
 #===============================================================================
 #--- MAIN CODE
@@ -64,7 +64,7 @@ PROJECT_PATH
 DATA_PATH = r"/media/alfred/USB STICK"
 
 def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
-    logging.debug("Started training".format())
+    logging.info("Started training".format())
     start_time = time.time()
     history = model.fit_generator(
         train_generator,
@@ -79,7 +79,7 @@ def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
         verbose=0,
         callbacks=callbacks
         )
-    logging.debug("Elapsed training time {}".format(time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time))))
+    logging.info("Elapsed training time {}".format(time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time))))
     
 #    print("Elapsed:", time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time)))
 
@@ -87,7 +87,7 @@ def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
 
 
 def train_model(model,train_generator,validation_generator,callbacks=[]):
-    logging.debug("Started training".format())
+    logging.info("Started training".format())
     start_time = time.time()
     history = model.fit_generator(
         train_generator,
@@ -100,7 +100,7 @@ def train_model(model,train_generator,validation_generator,callbacks=[]):
         callbacks=callbacks
         )
     
-    logging.debug("Elapsed training time {}".format(time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time))))
+    logging.info("Elapsed training time {}".format(time.strftime("%H:%M:%S", time.gmtime(time.time() - start_time))))
     
     #print("Elapsed:", )
 
@@ -108,13 +108,15 @@ def train_model(model,train_generator,validation_generator,callbacks=[]):
 
 def add_project_logger(logger,path_proj):
     fh = logging.FileHandler(filename=os.path.join(path_proj, 'log.txt'))
-    fh.setLevel('DEBUG')
+    fh.setLevel('INFO')
     logformat = logging.Formatter("%(asctime)s - %(levelno)-3s - %(module)-20s  %(funcName)-30s: %(message)s")
     fh.setFormatter(logformat)
+    
+    
     logger.addHandler(fh)
     
     
-    raise
+    #raise
 
 
     return logger 
@@ -158,12 +160,12 @@ def print_metrics(test_df):
                                                  sample_weight=None)
     
     
-    logging.debug("accuracy_score {}".format(accuracy_score))
-    logging.debug("roc_auc_score {}".format(roc_auc_score))
-    logging.debug("confusion_matrix {}".format(confusion_matrix))
-    logging.debug("f1_score {}".format(f1_score))
-    logging.debug("log_loss {}".format(log_loss))
-    logging.debug("precision_score {}".format(precision_score))
+    logging.info("accuracy_score {}".format(accuracy_score))
+    logging.info("roc_auc_score {}".format(roc_auc_score))
+    logging.info("confusion_matrix {}".format(confusion_matrix))
+    logging.info("f1_score {}".format(f1_score))
+    logging.info("log_loss {}".format(log_loss))
+    logging.info("precision_score {}".format(precision_score))
 
 
 
@@ -178,9 +180,9 @@ def run(dropout, project_name, data_source_name):
     #--- Add the project logger
     add_project_logger(my_logger,path_run)
 
-    logging.debug("Project base: {}".format(PROJECT_PATH))
-    logging.debug("Started project {}".format(path_proj))
-    logging.debug("Started run {}".format(path_run))
+    logging.info("Project base: {}".format(PROJECT_PATH))
+    logging.info("Started project {}".format(path_proj))
+    logging.info("Started run {}".format(path_run))
     
     
     my_utilities.print_tensor_devices()
@@ -188,7 +190,7 @@ def run(dropout, project_name, data_source_name):
     #--- Get data paths
     data_root = os.path.join(DATA_PATH,data_source_name)
     
-    logging.debug("Data located at {}".format(data_root))
+    logging.info("Data located at {}".format(data_root))
     data_dict = filemanager.get_data_set(data_root)
     
     #--- Get generators
@@ -209,7 +211,7 @@ def run(dropout, project_name, data_source_name):
     model_json = model.to_json()
     with open(json_path, "w") as json_file:
         json_file.write(model_json)
-    logging.debug("Saved model to {}".format(json_path))
+    logging.info("Saved model to {}".format(json_path))
     
     #--- Plot the model architecture to an image
     #my_plotting.image_model(path_run,model)
@@ -245,9 +247,9 @@ def run(dropout, project_name, data_source_name):
     with open(path_history, 'w') as fp:
         json_string = json.dump(history_dict,fp)
     
-    logging.debug("Saved history.__dict__ to {}".format(path_history))
+    logging.info("Saved history.__dict__ to {}".format(path_history))
 
-    logging.debug("Finished run {}".format(os.path.split(path_run)[-1]))
+    logging.info("Finished run {}".format(os.path.split(path_run)[-1]))
     
     #--- Testing
     test_df = my_testing.test_model(model,data_dict)
@@ -255,17 +257,17 @@ def run(dropout, project_name, data_source_name):
     with open(path_testing_result,'w') as f:
         test_df.to_csv(f)
         
-    logging.debug("Saved testing to {}".format(path_testing_result))
+    logging.info("Saved testing to {}".format(path_testing_result))
         
     #print(test_df)
 
-    logging.debug("Finished testing {}".format(os.path.split(path_run)[-1]))
+    logging.info("Finished testing {}".format(os.path.split(path_run)[-1]))
     
     
     #--- Metrics
     print_metrics(test_df)
 
-    logging.debug("Finished with metric, done {}".format(os.path.split(path_run)[-1]))
+    logging.info("Finished with metric, done {}".format(os.path.split(path_run)[-1]))
 
     
 
@@ -288,5 +290,5 @@ if __name__ == "__main__":
             
             run(this_drop,project_name,data_source_name)
             
-        #logging.debug("Saved history.__dict__ to {}".format(path_history))
+        #logging.info("Saved history.__dict__ to {}".format(path_history))
 

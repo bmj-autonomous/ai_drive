@@ -35,17 +35,17 @@ class MyLoggingCallback(ks.callbacks.Callback):
 
 class MyCallback(ks.callbacks.Callback):
     def on_train_begin(self, logs={}):
-        logging.debug("Started training {}".format(self.model))
+        logging.info("Started training {}".format(self.model))
         self.losses = []
         return 
         
     def on_train_end(self, logs={}):
-        logging.debug("Finished training {}".format(self.model))
+        logging.info("Finished training {}".format(self.model))
         return
  
 
     def on_epoch_begin(self, epoch, logs={}):
-        logging.debug("Epoch {} {}".format(epoch,logs))
+        logging.info("Epoch {} {}".format(epoch,logs))
         
         return
  
@@ -56,7 +56,7 @@ class MyCallback(ks.callbacks.Callback):
 
         
     def on_epoch_end(self, epoch, logs={}):
-        logging.debug("*".format(epoch))
+        logging.info("*".format(epoch))
         
 
 class Test_Callback(ks.callbacks.Callback):

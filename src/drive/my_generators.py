@@ -53,7 +53,7 @@ def get_train_generator_aug(directory,batch_size):
         class_mode = "binary",
     );
     
-    logging.debug("Training with augmentation: {} files over {} classes, resized to {}".format(
+    logging.info("Training with augmentation: {} files over {} classes, resized to {}".format(
         len(train_generator.filenames),
         train_generator.num_classes,
         train_generator.target_size,
@@ -71,7 +71,7 @@ def get_validation_generator(directory,batch_size):
         class_mode = "binary",
     )
     
-    logging.debug("Validation: {} files over {} classes, resized to {}".format(
+    logging.info("Validation: {} files over {} classes, resized to {}".format(
         len(validation_generator.filenames),
         validation_generator.num_classes,
         validation_generator.target_size,
@@ -90,7 +90,7 @@ def get_train_generator_simple(directory,batch_size):
         class_mode = "binary",
     );
     
-    logging.debug("Training: {} files over {} classes, resized to {}".format(
+    logging.info("Training: {} files over {} classes, resized to {}".format(
         len(train_generator.filenames),
         train_generator.num_classes,
         train_generator.target_size,

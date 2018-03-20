@@ -82,7 +82,7 @@ def get_data_set(base_path):
     dict_data_path['subdirs'] = subdirs
 
 
-    logging.debug("Found {} in {}".format(dict_data_path['subdirs'],base_path))
+    logging.info("Found {} in {}".format(dict_data_path['subdirs'],base_path))
     
     # Get the classes
     classdirsall = list()
@@ -102,7 +102,7 @@ def get_data_set(base_path):
     assert all(compare), f"Class mismatch in {classdirsall}"
     
     classes = classdirsall.pop()
-    logging.debug("Found {} classes: {}".format(len(classes),classes))
+    logging.info("Found {} classes: {}".format(len(classes),classes))
     dict_data_path['classes'] = classes
     
     dict_data_path['folders'] = dict()
@@ -123,7 +123,7 @@ def get_data_set(base_path):
     
     #pprint(dict_data_path['filecounts'])
     df = pd.DataFrame.from_dict(dict_data_path['filecounts'])
-    logging.debug("Organized dataset paths at {}".format(base_path))
+    logging.info("Organized dataset paths at {}".format(base_path))
     
     print(tabulate(df, headers='keys', tablefmt='psql'))
 
@@ -132,12 +132,12 @@ def get_data_set(base_path):
 def run():
     data_root = os.path.join(DATA_PATH,'cats_dogs_all')
     
-    logging.debug("Data located at {}".format(data_root))
+    logging.info("Data located at {}".format(data_root))
     
     path_dict=get_data_set(data_root)
 
 
 if __name__ == "__main__":
-    logging.debug("Data path: {}".format(DATA_PATH))
-    logging.debug("Project path: {}".format(PROJECT_PATH))
+    logging.info("Data path: {}".format(DATA_PATH))
+    logging.info("Project path: {}".format(PROJECT_PATH))
     run()

@@ -24,7 +24,7 @@ def print_tensor_devices():
         devices.append(dev_dict)
     
     for i,dev in enumerate(devices):
-        logging.debug("Device {}, {}, type {}, memory {}".format(i,
+        logging.info("Device {}, {}, type {}, memory {}".format(i,
             dev['name'],
             dev['device_type'],
             dev['memory_limit'],            ))

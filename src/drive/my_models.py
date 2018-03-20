@@ -7,7 +7,7 @@ import keras as ks
 import logging
 def get_model():
     dropout = 0.5
-    logging.debug("Model with dropout {}".format(dropout))
+    logging.info("Model with dropout {}".format(dropout))
 
     model = ks.models.Sequential()
 
@@ -42,7 +42,7 @@ def get_model():
 
 
 def get_model_4xconv_vary_drop(dropout):
-    logging.debug("Model with dropout {}".format(dropout))
+    logging.info("Model with dropout {}".format(dropout))
 
     model = ks.models.Sequential()
 
@@ -80,7 +80,7 @@ def get_model_4xconv_vary_drop(dropout):
 
 
 def get_model_2xconv_vary_drop(dropout):
-    logging.debug("Model with dropout {}".format(dropout))
+    logging.info("Model with dropout {}".format(dropout))
     
     model = ks.models.Sequential()
 

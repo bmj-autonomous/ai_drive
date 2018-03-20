@@ -24,7 +24,7 @@ myLogger.setLevel("DEBUG")
 # if __name__ == '__main__' and __package__ is None:
 #     this_path = path.dirname(path.dirname(path.abspath(__file__)))
 #     sys.path.append(this_path)
-#     logging.debug("ADDED TO PATH: ".format(this_path))
+#     logging.info("ADDED TO PATH: ".format(this_path))
 
 #===============================================================================
 #--- SETUP Standard modules
@@ -232,7 +232,7 @@ def get_weights(this_run_path):
     epoch_num = [int(re.findall(r'\d+', f)[0]) for f in epochs]
     #print(epoch_num)
 
-    logging.debug("Found {} weights files, total {:.0f} MB = {:.1f} MB per file".format(
+    logging.info("Found {} weights files, total {:.0f} MB = {:.1f} MB per file".format(
         length,total_size,avg_size
         )
     )
@@ -257,7 +257,7 @@ def get_solutions_csv(path_solutions):
     df_solutions.set_index('id',inplace=True)
     df_solutions.sort_index(inplace=True)
     #df_solutions.head()
-    logging.debug("Loaded solutions from {}, {} rows".format(path_solutions,len(df_solutions)))
+    logging.info("Loaded solutions from {}, {} rows".format(path_solutions,len(df_solutions)))
     return df_solutions
 
 
@@ -315,7 +315,7 @@ def run():
     run_folders = [dir for dir in os.listdir(root_path) if re.match('run',dir)]
     for rfolder in run_folders:
         print(rfolder)
-        logging.debug("In {}".format(rfolder))
+        logging.info("In {}".format(rfolder))
         this_run_path = os.path.join(root_path,rfolder)
         get_weights(this_run_path)
 

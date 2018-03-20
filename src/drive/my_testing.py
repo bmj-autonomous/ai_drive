@@ -52,7 +52,7 @@ def test_model(model,data_dict):
             
     t1 = time.time()
     total = t1-t0
-    logging.debug("Processed {} images in {} batches. Elapsed time: {}".format(num_files, 
+    logging.info("Processed {} images in {} batches. Elapsed time: {}".format(num_files, 
                                                                                 num_batches, 
                                                                                 total))
     
@@ -81,7 +81,7 @@ def test_model(model,data_dict):
             idx = test_generator.batch_index
             
             # Report
-            logging.debug("{} seen {} / {} = {:.1f}%".format(idx,seen_files,num_files,seen_files/num_files*100))
+            logging.info("{} seen {} / {} = {:.1f}%".format(idx,seen_files,num_files,seen_files/num_files*100))
         
             # Make predictions and append
             predictions = model.predict(batch[0])
@@ -94,13 +94,13 @@ def test_model(model,data_dict):
         
         t1 = time.time()
         total = t1-t0
-        logging.debug("Processed {} images in {} batches. Elapsed time: {}}".format(seen_files, num_batches, total))
+        logging.info("Processed {} images in {} batches. Elapsed time: {}}".format(seen_files, num_batches, total))
         
         #print(len(pths))
         #data_dict['folders'][]
         #data_dict['folders']
         #model
-        logging.debug("".format())
+        logging.info("".format())
 
 
 if __name__ == '__main__':
