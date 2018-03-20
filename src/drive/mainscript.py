@@ -61,7 +61,7 @@ logging.debug("Project path: {}".format(PROJECT_PATH))
 #--- MAIN CODE
 #===============================================================================
 PROJECT_PATH
-DATA_PATH
+DATA_PATH = r"/media/alfred/USB STICK"
 
 def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
     logging.debug("Started training".format())
@@ -72,7 +72,7 @@ def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
         steps_per_epoch = 10, # Batches??
         #batch_size = 200,
         #epochs=50,
-        epochs=5,
+        epochs=2,
         validation_data = validation_generator,
         #validation_steps = 5000/50,
         validation_steps = 5,
@@ -112,24 +112,29 @@ def add_project_logger(logger,path_proj):
     logformat = logging.Formatter("%(asctime)s - %(levelno)-3s - %(module)-20s  %(funcName)-30s: %(message)s")
     fh.setFormatter(logformat)
     logger.addHandler(fh)
+    
+    
+    raise
+
+
     return logger 
 
 
 def print_metrics(test_df):    
-    accuracy_score = sk.metrics.accuracy_score(test_df['label'], 
+    accuracy_score = sklearn.metrics.accuracy_score(test_df['label'], 
                                     test_df['label_pred'], 
                                     normalize=True,
                                     sample_weight=None)
     
-    roc_auc_score = sk.metrics.roc_auc_score(y_true = test_df['label'], 
+    roc_auc_score = sklearn.metrics.roc_auc_score(y_true = test_df['label'], 
                                                   y_score = test_df['prediction_prob'], 
                                                   average='macro', 
                                                   sample_weight=None)
     
-    confusion_matrix  = sk.metrics.confusion_matrix(test_df['label'], 
+    confusion_matrix  = sklearn.metrics.confusion_matrix(test_df['label'], 
                                                     test_df['label_pred'])
     
-    f1_score  = sk.metrics.f1_score(y_true = test_df['label'], 
+    f1_score  = sklearn.metrics.f1_score(y_true = test_df['label'], 
                                     y_pred = test_df['label_pred'], 
                                     labels=None, 
                                     pos_label=1, 
@@ -137,7 +142,7 @@ def print_metrics(test_df):
                                     sample_weight=None)
     
     
-    log_loss  = sk.metrics.log_loss(y_true = test_df['label'], 
+    log_loss  = sklearn.metrics.log_loss(y_true = test_df['label'], 
                                         y_pred = test_df['label_pred'],  
                                         eps=1e-15, 
                                         normalize=True, 
@@ -145,7 +150,7 @@ def print_metrics(test_df):
                                         labels=None)
     
     
-    precision_score = sk.metrics.precision_score(y_true = test_df['label'], 
+    precision_score = sklearn.metrics.precision_score(y_true = test_df['label'], 
                                         y_pred = test_df['label_pred'], 
                                                  labels=None, 
                                                  pos_label=1, 
@@ -197,8 +202,8 @@ def run(dropout, project_name, data_source_name):
     
     #--- Get model, and save it
     #model = my_models.get_model_4xconv_vary_drop(dropout)
-    #model = my_models.get_model_4xconv_vary_drop(0.5)
-    model = my_models.get_model_testing_tiny()
+    model = my_models.get_model_4xconv_vary_drop(0.5)
+    #model = my_models.get_model_testing_tiny()
     
     json_path = os.path.join(path_run,r"saved_model_architecture.json")
     model_json = model.to_json()
@@ -229,8 +234,8 @@ def run(dropout, project_name, data_source_name):
     callbacks = [checkpt_callback,history,my_callback,my_log_callback]
 
     #--- Train the model! 
-    #history = train_model(model,train_generator,validation_generator,callbacks)
-    history = train_model_simple(model,train_generator,validation_generator,callbacks)
+    history = train_model(model,train_generator,validation_generator,callbacks)
+    #history = train_model_simple(model,train_generator,validation_generator,callbacks)
     
     #--- Save the history object
     history_dict = copy.copy(history.__dict__)
@@ -252,7 +257,7 @@ def run(dropout, project_name, data_source_name):
         
     logging.debug("Saved testing to {}".format(path_testing_result))
         
-    print(test_df)
+    #print(test_df)
 
     logging.debug("Finished testing {}".format(os.path.split(path_run)[-1]))
     
@@ -265,22 +270,23 @@ def run(dropout, project_name, data_source_name):
     
 
 if __name__ == "__main__":
-    #dropout = [0,0.1,0.3.5,0.75]
+    dropout = [0, 0.1, 0.25, 0.5, 0.75]
     project_name='catdog2'
     data_source_name = 'cats_dogs_all_test_split'
     
     
-    run(0.5,project_name,data_source_name)
+    #run(0.5,project_name,data_source_name)
     
     
     #raise
     
-    if 0:
+    if 1:
         dropout = np.arange(0,1,0.1)
         for this_drop in dropout:
+            ks.backend.clear_session()
             print(this_drop)
             
             run(this_drop,project_name,data_source_name)
-            ks.backend.clear_session()
-        logging.debug("Saved history.__dict__ to {}".format(path_history))
+            
+        #logging.debug("Saved history.__dict__ to {}".format(path_history))
 
