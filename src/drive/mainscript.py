@@ -11,6 +11,7 @@ import logging.config
 
 import yaml as yaml
 from drive import my_utilities
+print(ABSOLUTE_LOGGING_PATH)
 log_config = yaml.load(open(ABSOLUTE_LOGGING_PATH, 'r'))
 logging.config.dictConfig(log_config)
 
