@@ -87,14 +87,14 @@ def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
     return history
 
 
-def train_model(model,train_generator,validation_generator,callbacks=[]):
+def train_model(model,train_generator,validation_generator,callbacks=[],epochs=50):
     logging.info("Started training".format())
     start_time = time.time()
     history = model.fit_generator(
         train_generator,
         steps_per_epoch = 20000/50, # Batches??
         #batch_size = 200,
-        epochs=50,
+        epochs=epochs,
         validation_data = validation_generator,
         validation_steps = 5000/50,
         verbose=0,
@@ -273,7 +273,7 @@ def run(dropout, project_name, data_source_name):
     
 
 if __name__ == "__main__":
-    dropout = [0, 0.1, 0.25, 0.5, 0.75]
+    #dropout = [0, 0.1, 0.25, 0.5, 0.75]
     project_name='catdog2'
     data_source_name = 'cats_dogs_all_test_split'
     
@@ -284,7 +284,9 @@ if __name__ == "__main__":
     #raise
     
     if 1:
-        dropout = np.arange(0,1,0.1)
+        #dropout = np.arange(0,1,0.1)
+        #dropout = np.arange(0,1,0.1)
+        dropout = [0.4, 0.5, 0.6, 0.7]
         for this_drop in dropout:
             ks.backend.clear_session()
             print(this_drop)

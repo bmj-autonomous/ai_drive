@@ -18,7 +18,7 @@ def test_model(model,data_dict):
 
     pths = list(os.walk(data_dict['my_test']))
     
-    test_generator = my_generators.get_test_generator(data_dict['my_test'],200)
+    test_generator = my_generators.get_test_generator(data_dict['my_test'],50)
 
     num_batches = len(test_generator)
     num_files = test_generator.n
