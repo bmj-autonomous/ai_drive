@@ -62,7 +62,8 @@ logging.info("Project path: {}".format(PROJECT_PATH))
 #--- MAIN CODE
 #===============================================================================
 PROJECT_PATH
-DATA_PATH = r"/media/alfred/USB STICK"
+DATA_PATH
+#DATA_PATH = r"/media/alfred/USB STICK"
 
 def train_model_simple(model,train_generator,validation_generator,callbacks=[]):
     logging.info("Started training".format())
@@ -274,7 +275,7 @@ def run(dropout, project_name, data_source_name):
 
 if __name__ == "__main__":
     #dropout = [0, 0.1, 0.25, 0.5, 0.75]
-    project_name='catdog2'
+    project_name='catdog3'
     data_source_name = 'cats_dogs_all_test_split'
     
     
