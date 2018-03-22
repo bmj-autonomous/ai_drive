@@ -36,7 +36,6 @@ Useful to avoid clutter from old models / layers.
 """
 ```
 
-
 ## asdf
 
 batch_size: Integer or None. Number of samples per gradient update. If unspecified, it will default to 32.
