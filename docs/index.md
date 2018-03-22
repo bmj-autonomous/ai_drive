@@ -43,7 +43,7 @@ tensors such as TensorFlow data tensors, the default None is equal to the
 number of samples in your dataset divided by the batch size, or 1 if that
 cannot be determined.
 
-
+```
 history = model.fit_generator(
     train_generator,
     steps_per_epoch = 3,
