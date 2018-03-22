@@ -22,10 +22,20 @@ Two variants of image generation were employed; the simple default which
 | zoom_range         | 0      | 0.2       |
 | horizontal_flip    | False  | True      |
 
-## TensorFlow resource exhaustion
+### Aside; TensorFlow resource exhaustion
 
-``` Keras.backend.clear_session()
+After running several parameter sets (i.e. varying Dropout, model architecture),
+TensorFlow would crash with a ```Resource Exhaustion``` error. After some searching,
+calling the following before every run in the loop clears the error (GPU memory? Main RAM?).
+
 ```
+Keras.backend.clear_session()
+
+"""Destroys the current TF graph and creates a new one.
+Useful to avoid clutter from old models / layers.
+"""
+```
+
 
 ## asdf
 
