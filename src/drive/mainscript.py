@@ -206,9 +206,9 @@ def run(dropout, project_name, data_source_name):
     
     #--- Get model, and save it
     #model = my_models.get_model_4xconv_vary_drop(dropout)
-    #model = my_models.get_model_3xconv_vary_drop(dropout)
+    model = my_models.get_model_3xconv_vary_drop(dropout)
     #model = my_models.get_model_testing_tiny()
-    model = my_models.get_model_2xconv_vary_drop(dropout)
+    #model = my_models.get_model_2xconv_vary_drop(dropout)
 
     
     json_path = os.path.join(path_run,r"saved_model_architecture.json")
