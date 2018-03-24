@@ -60,7 +60,7 @@ import ExergyUtilities.util_path as xrg_path
 PROJECT_PATH
 DATA_PATH
 
-
+#--- Layer output
 
 def Conv2D(params):
     #print(params['class_name'])
@@ -102,8 +102,11 @@ LAYER_FUNCS = {
 
 
 
+#--- Utilities for log files
 
 def create_date(res_dict):
+    """Create the datetime object from the date string
+    """
     #values = ['2014', '08', '17', '18', '01', '05']
 
     datevec = [ int(res_dict['year']),
@@ -119,8 +122,9 @@ def create_date(res_dict):
 
 
 def parse_log_string(l):
-    """datetime, log string text, module string
+    """Split into datetime, log string text, module string
     """
+    
     #log_regex = re.compile(r"(?P<year>\d{2,4})-(?P<month>\d{2})-(?P<day>\d{2}) (?P<hour>\d{2}):(?P<minute>\d{2}):(?P<second>\d{2}[.\d]*).*:\s(?P<logstring>.*)")
     #-- TODO !!!!
     log_regex = re.compile(r"(?P<year>\d{2,4})-(?P<month>\d{2})-(?P<day>\d{2}) (?P<hour>\d{2}):(?P<minute>\d{2}):(?P<second>\d{2}),[\d]*\s-\s(?P<level>\d\d)\s*-\s(?P<module_str>.*).*:\s(?P<logstring>.*)$")
@@ -135,20 +139,6 @@ def parse_log_string(l):
     
     return({'dt':this_dt,'logstr':logstr,'modstr':module_str})
 
-
-def count_params(model):
-    """Uses backend 'K' count_params
-    Returns dict for Total/Trainable/Non-trainable
-    """
-    trainable_count = int(
-        np.sum([K.count_params(p) for p in set(model.trainable_weights)]))
-    non_trainable_count = int(
-        np.sum([K.count_params(p) for p in set(model.non_trainable_weights)]))
-    return {'Total':trainable_count + non_trainable_count,'Trainable':trainable_count,'Non-trainable':non_trainable_count}
-    #print('Total params: {:,}'.format(trainable_count + non_trainable_count))
-    #print('Trainable params: {:,}'.format(trainable_count))
-    #print('Non-trainable params: {:,}'.format(non_trainable_count))
-    #```total_params = (filter_height * filter_width * input_image_channels + 1) * number_of_filters```
 
 def get_log_file(this_run_path):
     log_file = [os.path.join(this_run_path,f) for f in os.listdir(this_run_path) 
@@ -182,8 +172,6 @@ def get_log_file(this_run_path):
                 generator = res_dict['modstr']
                 #raise
             #my_generators         
-    
-        
         
         # Check if finished
         finished_regex = re.compile(r"Finished training")
@@ -196,6 +184,71 @@ def get_log_file(this_run_path):
 
 
 
+
+#--- Model object
+
+def get_architecture_path(this_run_path):
+    arch_file = [os.path.join(this_run_path,f) for f in os.listdir(this_run_path) 
+             if re.match('saved_model_architecture.json$',f)]
+    if arch_file: arch_file = arch_file.pop() 
+    else: arch_file = None
+    #print(arch_file)
+    
+    logging.debug("Found architecture file at {}".format(arch_file))
+    
+    return(arch_file)
+
+def read_model_json(this_run_path):
+    """Read the saved model as a json string
+    """
+    path_arch = get_architecture_path(this_run_path)
+    with open(path_arch,'r') as arch_file:
+        arch_dict = json.load(arch_file)
+    
+    logging.debug("Model json string loaded".format())
+    
+    return arch_dict
+
+def load_model(this_run_path):
+    """Load the model json and instantiate it in Keras
+    """
+    path_arch = get_architecture_path(this_run_path)
+    from keras.models import model_from_json
+    
+    with open(path_arch,'r') as arch_file:
+        loaded_model_json = arch_file.read()
+        model = model_from_json(loaded_model_json)
+    
+    logging.debug("Model instantiated {}".format(model))
+    
+    return model
+
+
+def count_params(model):
+    """Uses backend 'K' count_params
+    Send model object
+    Returns dict for Total/Trainable/Non-trainable
+    """
+    trainable_count = int(
+        np.sum([K.count_params(p) for p in set(model.trainable_weights)]))
+    non_trainable_count = int(
+        np.sum([K.count_params(p) for p in set(model.non_trainable_weights)]))
+    
+    logging.debug("Total {}, Trainable {}, Non-Trainable".format(trainable_count + non_trainable_count,
+                                                                 trainable_count,
+                                                                 non_trainable_count))
+    
+    return {'Total':trainable_count + non_trainable_count,
+            'Trainable':trainable_count,
+            'Non-trainable':non_trainable_count}
+
+    #print('Total params: {:,}'.format(trainable_count + non_trainable_count))
+    #print('Trainable params: {:,}'.format(trainable_count))
+    #print('Non-trainable params: {:,}'.format(non_trainable_count))
+    #```total_params = (filter_height * filter_width * input_image_channels + 1) * number_of_filters```
+    
+
+#--- Weights
 
 def get_weights(this_run_path):
     """Return the weights hdf5 files from a directory
@@ -248,49 +301,7 @@ def get_weights(this_run_path):
 
     return wt_dicts
 
-def get_solutions_csv(path_solutions):
-    df_solutions = pd.read_csv(path_solutions)
-    df_solutions.head()
-    #solutions.[]
-    cutoff=0.5
-    df_solutions['labelTF'] = df_solutions['label'].map(lambda x: True if x >= 0.5 else False)
-    df_solutions.set_index('id',inplace=True)
-    df_solutions.sort_index(inplace=True)
-    #df_solutions.head()
-    logging.info("Loaded solutions from {}, {} rows".format(path_solutions,len(df_solutions)))
-    return df_solutions
-
-
-def get_architecture_path(this_run_path):
-    arch_file = [os.path.join(this_run_path,f) for f in os.listdir(this_run_path) 
-             if re.match('saved_model_architecture.json$',f)]
-    if arch_file: arch_file = arch_file.pop() 
-    else: arch_file = None
-    #print(arch_file)
-    return(arch_file)
-
-
-def read_model_json(this_run_path):
-    """Read the saved model as a json string
-    """
-    path_arch = get_architecture_path(this_run_path)
-    with open(path_arch,'r') as arch_file:
-        arch_dict = json.load(arch_file)
-    
-    return arch_dict
-
-def load_model(this_run_path):
-    """Load the model and instantiate it in Keras
-    """
-    path_arch = get_architecture_path(this_run_path)
-    from keras.models import model_from_json
-    
-    with open(path_arch,'r') as arch_file:
-        loaded_model_json = arch_file.read()
-        model = model_from_json(loaded_model_json)
-        
-    return model
-        
+#--- History log file
 
 def get_history(this_run_path):
     hist_file_simple = [os.path.join(this_run_path,f) for f in os.listdir(this_run_path) 
@@ -303,8 +314,25 @@ def get_history(this_run_path):
                  if re.match('saved_model_history.json$',f)]
     if hist_dict: hist_dict = hist_dict.pop() 
     else: hist_dict = None
-            
+    
+    logging.debug("History file loaded {}".format(hist_dict))
+    
     return hist_dict    
+
+#--- OTHERS
+
+def get_solutions_csv(path_solutions):
+    df_solutions = pd.read_csv(path_solutions)
+    df_solutions.head()
+    #solutions.[]
+    cutoff=0.5
+    df_solutions['labelTF'] = df_solutions['label'].map(lambda x: True if x >= 0.5 else False)
+    df_solutions.set_index('id',inplace=True)
+    df_solutions.sort_index(inplace=True)
+    #df_solutions.head()
+    logging.info("Loaded solutions from {}, {} rows".format(path_solutions,len(df_solutions)))
+    return df_solutions
+
 
 def run():
     #xrg_path.
