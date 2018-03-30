@@ -206,8 +206,10 @@ def run(dropout, project_name, data_source_name):
     
     #--- Get model, and save it
     #model = my_models.get_model_4xconv_vary_drop(dropout)
-    model = my_models.get_model_4xconv_vary_drop(0.5)
+    model = my_models.get_model_3xconv_vary_drop(dropout)
     #model = my_models.get_model_testing_tiny()
+    #model = my_models.get_model_2xconv_vary_drop(dropout)
+
     
     json_path = os.path.join(path_run,r"saved_model_architecture.json")
     model_json = model.to_json()
@@ -275,7 +277,7 @@ def run(dropout, project_name, data_source_name):
 
 if __name__ == "__main__":
     #dropout = [0, 0.1, 0.25, 0.5, 0.75]
-    project_name='catdog3'
+    project_name='catdog5'
     data_source_name = 'cats_dogs_all_test_split'
     
     
@@ -287,7 +289,7 @@ if __name__ == "__main__":
     if 1:
         #dropout = np.arange(0,1,0.1)
         #dropout = np.arange(0,1,0.1)
-        dropout = [0.4, 0.5, 0.6, 0.7]
+        dropout = [0.4, 0.5, 0.6]
         for this_drop in dropout:
             ks.backend.clear_session()
             print(this_drop)
