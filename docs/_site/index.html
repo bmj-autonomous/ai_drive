@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    
+    <title>ai.drive()</title>
+    
+<!-- Begin Jekyll SEO tag v2.4.0 -->
+<title>Overview | [“ai.drive()”]</title>
+<meta name="generator" content="Jekyll v3.7.3" />
+<meta property="og:title" content="Overview" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="[“Autonomous Driving with Deep Learning and Raspberry Pi”]" />
+<meta property="og:description" content="[“Autonomous Driving with Deep Learning and Raspberry Pi”]" />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="[“ai.drive()”]" />
+<script type="application/ld+json">
+{"name":"[“ai.drive()”]","description":"[“Autonomous Driving with Deep Learning and Raspberry Pi”]","@type":"WebSite","url":"http://localhost:4000/","headline":"Overview","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=ca7e88672e872854563ae30fa67b0527520670da">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/assets/js/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="/assets/css/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="http://github.com/MarcusJones/ai_drive">View On GitHub</a></li>
+          
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>ai.drive()</h1>
+          <p>Autonomous Driving with Deep Learning and Raspberry Pi</p>          
+          <span class="credits left">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+          <span class="credits right">Project maintained by <a href="http://github.com/MarcusJones">MarcusJones</a></span>
+          <p>
+        </div>
+
+        <h1 id="overview">Overview</h1>
+
+<p>Get a minimum viable vehicle running in a month!</p>
+
+<ul>
+  <li>Vehicle drives autonomously between taped lines</li>
+  <li>Duct tape, chewing gum, and superglue allowed!</li>
+</ul>
+
+<p><a href="https://github.com/MarcusJones/ai_drive">(Github Repo with source)</a></p>
+
+<h1 style="text-align: center;"> Table Of Contents </h1>
+
+<h4 id="mar-28-driving-badly---the-one-where-the-car-tried-to-drive-on-a-line"><a href="#Mar28">Mar. 28, Driving badly</a> - The one where the car tried to drive on a line</h4>
+
+<h4 id="mar-22-calibration---the-one-where-the-car-is-driven-repeatedly-and-purposely-against-a-wall"><a href="#Mar22">Mar. 22, Calibration</a> - The one where the car is driven repeatedly and purposely against a wall</h4>
+
+<h4 id="mar-06-cats-and-dogs---nough-said"><a href="#Mar06">Mar. 06, Cats and Dogs</a> - ‘nough said</h4>
+
+<h4 id="mar-05-ds3-controller----the-one-where-the-controller-connects"><a href="#Mar05">Mar. 05, DS3 controller </a> - The one where the controller connects</h4>
+
+<h4 id="feb-02-procurement----the-one-where-stuff-is-bought"><a href="#Feb02">Feb. 02, Procurement </a> - The one where stuff is bought</h4>
+
+<h1 id="mar-28-2018---driving-badly"><a name="Mar28"></a>Mar. 28, 2018 - Driving badly</h1>
+
+<p>asdfasdfasdf</p>
+
+<h1 id="mar-22-2018---calibration"><a name="Mar22"></a>Mar. 22, 2018 - Calibration</h1>
+
+<p>asdfasdfasdf</p>
+
+<h1 id="mar-6-2018---cats-and-dogs"><a name="Mar06"></a>Mar. 6, 2018 - Cats and Dogs</h1>
+
+<p>Two variants of image generation were employed; the simple default which</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Simple</th>
+      <th>Augmented</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>rotation_range</td>
+      <td>0</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <td>width_shift_range</td>
+      <td>0</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <td>height_shift_range</td>
+      <td>0</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <td>shear_range</td>
+      <td>0</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <td>zoom_range</td>
+      <td>0</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <td>horizontal_flip</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="aside-tensorflow-resource-exhaustion">Aside; TensorFlow resource exhaustion</h3>
+
+<p>After running several parameter sets (i.e. varying Dropout, model architecture),
+TensorFlow would crash with a <code class="highlighter-rouge">Resource Exhaustion</code> error. After some searching,
+calling the following before every run in the loop clears the error (GPU memory? Main RAM?).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Keras.backend.clear_session()
+
+"""Destroys the current TF graph and creates a new one.
+Useful to avoid clutter from old models / layers.
+"""
+</code></pre></div></div>
+
+<h2 id="asdf">asdf</h2>
+
+<p>batch_size: Integer or None. Number of samples per gradient update. If unspecified, it will default to 32.</p>
+
+<p>epochs: Integer. Number of epochs to train the model.
+An epoch is an iteration over the entire x and y data provided.
+Note that in conjunction with initial_epoch, epochs is to be understood as
+“final epoch”. The model is not trained for a number of iterations given by
+epochs, but merely until the epoch of index epochs is reached.</p>
+
+<p>steps_per_epoch: Total number of steps (batches of samples) before declaring
+one epoch finished and starting the next epoch. When training with input
+tensors such as TensorFlow data tensors, the default None is equal to the
+number of samples in your dataset divided by the batch size, or 1 if that
+cannot be determined.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>history = model.fit_generator(
+    train_generator,
+    steps_per_epoch = 3,
+    epochs=2,
+    validation_data = validation_generator,
+    validation_steps = 2,
+    verbose=0,
+    callbacks=callbacks
+    )
+</code></pre></div></div>
+
+<p>What makes a cat a cat? How would you define dogness in contrast to catness?</p>
+
+<p><img src="/Post4_2018MAR06/catsdogs.jpg" alt="catsdogssample" /></p>
+
+<p>What relevance does this have to ai.drive()?</p>
+
+<p>Let’s rephrase the question:</p>
+
+<p><img src="/Post4_2018MAR06/leftright.jpg" alt="leftright" /></p>
+
+<p>How does a machine know left from right? With the progress on hardware, it’s
+time to shift focus on the software and Machine Learning problem. To warm up, I’m
+spending some time on my favourite Machine Learning problem; Cats vs. Dogs!</p>
+
+<p>Using the Python <code class="highlighter-rouge">keras</code> package, I am buidling a basic neural network for classification;</p>
+
+<img src="https://marcusjones.github.io/ai_drive/Post4_2018MAR06/modelTB.jpg" width = 60%>
+
+<p>And executing some basic training runs on a subset of the data;</p>
+
+<p><img src="/Post4_2018MAR06/Training%20example.jpg" alt="trainingexample" /></p>
+
+<p>The results of a longer training run over 30 epochs are presented below.</p>
+
+<p><img src="/Post4_2018MAR06/CatsDogs%2030%20epochs.jpg" alt="30epoch" /></p>
+
+<p>Here we see the classic curves for <strong>loss</strong> and <strong>accuracy</strong> over the Epochs.</p>
+
+<p>The binary cross-entropy loss, or log loss, measures the performance of a classification
+model whose output is a probability. A perfect model would have a log loss of 0.</p>
+
+<p>The accuracy calculates how often the predictions match the labels (correct
+classification)</p>
+
+<p>These metrics are plotted for the <strong>training data</strong>, which is used fit the model,
+and the <strong>cross-validation data</strong>, which is used as a ‘sanity check’ to verify
+that the model is not over-fitting. The final data-set, the <strong>test data</strong> is only
+seen at the end or training, and is used to calculate the final performance of
+the model.</p>
+
+<p>The current task is to gain more experience in training and evaluating models,
+augmenting and removing data, changing network architecture, and using different
+models and metrics.</p>
+
+<p>To accomplish this, I am moving my code out of Jupyter Lab into a new python package,
+which is accessuble at the present github repository.</p>
+
+<hr />
+
+<h1 id="-mar-5-2018---sony-ds3-controller-operational"><a name="Mar05"></a> Mar. 5, 2018 - Sony DS3 controller operational</h1>
+
+<h2 id="connection-debugging">Connection debugging</h2>
+<p>After a few hours going through all the commands several times, I somehow got
+the controller to communicate via BlueTooth with the car.</p>
+
+<p>To test the controller, I tried connecting it to my laptop. Running the
+<code class="highlighter-rouge">bluetoothctl</code> utility gave immediate results;</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>user@laptop2 ~ $ bluetoothctl
+[NEW] Controller 58:91:CF:1C:30:17 laptop2 [default]
+[NEW] Device FC:62:B9:3B:B3:B5 PLAYSTATION(R)3 Controller
+</code></pre></div></div>
+<p>This provided the necessary verifcation to show that the controller was functional and the
+correct model.</p>
+
+<p>After reading several articles online, there was mention of power connections,
+so instead of running from the battery pack, I connected to a wall USB adapter
+and started debugging with monitor and keyboard connected. Either the power
+supply, or simply the act of reconnecting the power, resulted in recognition
+of the device.</p>
+
+<p>After so much time debugging this problem, I learned of several tools for
+checking bluetooth and USB in linux;</p>
+
+<p><code class="highlighter-rouge">bluetoothctl</code> - Utility for scanning and managing connections at CLI</p>
+
+<p><code class="highlighter-rouge">lsusb</code> - List USB devices</p>
+
+<p><code class="highlighter-rouge">service bluetooth status</code> - Status of bluetooth</p>
+
+<p><code class="highlighter-rouge">dmesg | grep -i bluetooth</code> - Linux &lt;&gt; hardware messages related to bluetooth</p>
+
+<p><code class="highlighter-rouge">ls -a /dev/input/</code> - List mounted input devices, check for js0</p>
+
+<p><code class="highlighter-rouge">vi /var/log/syslog</code> - View the Linux system log file</p>
+
+<p>I also used the joystick (<code class="highlighter-rouge">apt install joystick</code>) utility for verifying
+joystick signals;</p>
+
+<p><code class="highlighter-rouge">jstest /dev/input/js0</code> - Raw RAM IO map for this device</p>
+
+<h2 id="calibration">Calibration</h2>
+
+<p>The PWM signal is controlled in the <code class="highlighter-rouge">config.py</code> file on the Pi. Two
+parameters influence the throttle signal - the calibrated maxium, which I set at
+390, and the joystick throttle multiplier, which I incrementally increased from
+0.50 to 0.95, searching for the <strong>minimum</strong> speed for my current hardware configuration.
+In the future, I will set the PWM maximum calibration to the real maximum PWM
+signal, and use the multipliers to control the safe speed for my application.</p>
+
+<p>Here is the summary of the configuration parameters;</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>THROTTLE_CHANNEL = 0
+THROTTLE_FORWARD_PWM = 390
+THROTTLE_STOPPED_PWM = 370
+THROTTLE_REVERSE_PWM = 350
+JOYSTICK_MAX_THROTTLE = 0.95
+</code></pre></div></div>
+
+<hr />
+
+<h1 id="feb-28-2018---its-alive">Feb. 28, 2018 - It’s alive!</h1>
+
+<p>There were two main areas of progress so far; hardware and software.</p>
+
+<p>In both areas, the official project documentation is <em>outstanding</em>, and I will just summarize and highlight the differences and challenges.</p>
+
+<p><a href="http://docs.donkeycar.com/">Instructions for the ‘DonkeyCar’ community are here</a>.</p>
+
+<h2 id="hardware">Hardware</h2>
+
+<h3 id="chassis">Chassis</h3>
+
+<p>Here is the vehicle, in the nude;</p>
+
+<img src="https://marcusjones.github.io/ai_drive/Post2_2018FEB28/OriginalChassis.jpg" width = 70%>
+
+<p>And my current modifications. I chose to use cardboard for prototyping a structure. Lightweight, easy to work with, it gets the job done. Layers were glued together, and recesses were cut to hold the Raspberry Pi USB battery, and to route cables. Duct tape is my friend.
+
+<img src="https://marcusjones.github.io/ai_drive/Post2_2018FEB28/BuiltUpChassis_SMALL.jpg" width = 80%>
+</p>
+
+<p>In a later stage, I would like to apply this additive layering technique using laser-cut plywood, below a snapshot of my progress in learning Fusion 360.</p>
+
+<img src="https://marcusjones.github.io/ai_drive/Post2_2018FEB28/3DprintTest.png" width = 100%>
+
+<h3 id="electrical-systems">Electrical systems</h3>
+
+<p>As mentioned in the first post, the main difference in chassis, compared to the ‘stock’ car, is the battery pack. In this case, the
+double 1700mah 2s 20c batteries store significantly more energy, but critically, also have a higher discharge rate, which is represented by the <strong>C-Rating</strong>;</p>
+
+<p><code class="highlighter-rouge">Max Current Draw = Capacity x C-Rating</code></p>
+
+<p>Secondly, the car has twice the voltage rating compared to the original ‘donkey car’ stock project. These two factors lead the car to have <strong>way too much power</strong> to make any real autonomous driving tests possible in this early phase.</p>
+
+<p>The table below lists the key parameters, and the third entry in the table is the current solution for de-powering the chassis: removing one battery from the power bank.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Variant</th>
+      <th>Technology</th>
+      <th>Voltage <br /> [V]</th>
+      <th>Capacity <br /> [mAH]</th>
+      <th>Discharge <br /> [C-Rating]</th>
+      <th>Configuration <br />[S]</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>‘Stock’ project car  <br /> Exceed Magnet</strong></td>
+      <td>NiMh</td>
+      <td>7.2</td>
+      <td>1100</td>
+      <td>Much less than 20C</td>
+      <td>?</td>
+    </tr>
+    <tr>
+      <td><strong>My car ‘HobbyKing Bad Bug’</strong>           <br /></td>
+      <td>LiPo</td>
+      <td>14.4</td>
+      <td>3400</td>
+      <td>More than 20C</td>
+      <td>2S * 2 = <strong>4S1P</strong></td>
+    </tr>
+    <tr>
+      <td>**50% Bad-Bug  **    <br /></td>
+      <td>LiPo</td>
+      <td>7.2</td>
+      <td>1700</td>
+      <td>20C</td>
+      <td>2S * 2 = <strong>2S1P</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This is therefore my current solution. Of course, I can put the second battery in parallel instead of removing it completely from the circuit.</p>
+
+<p>The figure below presents the electrical connections.</p>
+
+<img src="https://marcusjones.github.io/ai_drive/Post2_2018FEB28/Electronics.jpg" width = 100%>
+
+<h2 id="software-installation">Software installation</h2>
+
+<p>Thanks to the documentation and the USB disk image, installation was mostly painless. Here’s a quick summary of the process, see the project page for details.</p>
+
+<ol>
+  <li>Install software to the Raspberry Pi
+ a. Write the project disk image to the SD card
+ a. Wrote WiFi access to <code class="highlighter-rouge">/etc/wpa_supplicant/wpa_supplicant.conf</code>
+ a. Hostname remains as <code class="highlighter-rouge">d2</code> for now
+ a. Power on RPi, have a keyboard and monitor handy for troubleshooting
+ a. Test: Ping d2.local</li>
+  <li>Installing software on the host (linux on my laptop)
+ a. Tensorflow and Keras
+ a. Clone the source for the ‘donkeycar’ project, the python code for running the vehicle</li>
+  <li>Testing
+ a. <code class="highlighter-rouge">ping d2.local</code>
+ a. SSH into the RPi <code class="highlighter-rouge">ssh pi@d2.local</code>
+ a. Git-pull the donkeycar repo
+ a. Start a new car software by template <code class="highlighter-rouge">donkey createcar --template donkey2 --path ~/d2</code></li>
+</ol>
+
+<h2 id="running">Running</h2>
+
+<p>With the hardware and software set, the normal procedure becomes;</p>
+<ol>
+  <li><code class="highlighter-rouge">source activate drive</code> environment in linux</li>
+  <li><code class="highlighter-rouge">ssh pi@d2.local</code></li>
+  <li>Run the <code class="highlighter-rouge">python manage.py drive</code> command to start the car and web service</li>
+  <li>Access the car at <code class="highlighter-rouge">d2:8887</code></li>
+</ol>
+
+<h2 id="esc-programming">ESC Programming</h2>
+
+<p>In my ESC, there are different settings for controlling aspects of the motor performance. These settings are programmed by simple beep-code feedback. The user manual has some mistakes in the numbering, here are the codes for reference;</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Beep</th>
+      <th>Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>*</td>
+      <td>Running mode</td>
+      <td>Enable/Disable braking, reverse</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>**</td>
+      <td>Reverse force</td>
+      <td>20% increments</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>***</td>
+      <td>Brake force</td>
+      <td>25% increments</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><em>**</em></td>
+      <td>Drag brake force</td>
+      <td>Extra drag if coasting, in various % levels</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>*****</td>
+      <td>Neutral range</td>
+      <td>Sensitivity of stick throttle in 3/6/9/12% levels</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>_*</td>
+      <td>Start mode</td>
+      <td>Accel. at start, Very fast, Fast, Normal, Slow</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>_**</td>
+      <td>Timing</td>
+      <td>Brushless DC step timing in 0/5/10/15/20%levels</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>_***</td>
+      <td>Battery voltage protection</td>
+      <td>Keep default Li-xx 3.2V/cell</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>_<em>**</em></td>
+      <td>Over-heat protection</td>
+      <td>Keep default 110C</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>_*****</td>
+      <td>Protection mode</td>
+      <td>Keep default ‘lower power’</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The interesting ones are;</p>
+<ul>
+  <li>[4 - drag brake] to test slowing the car down with no throttle (glide)</li>
+  <li>[5 - neutral range] since my throttle is controlled by direct input of PWM values, I should be able to tighten this range</li>
+  <li>[6 - start mode] to keep the driving smooth</li>
+</ul>
+
+<p>I experimented with several settings, but I’m not sure which ones I successfully changed, so that’s on the list for later.</p>
+
+<h2 id="calibration-1">Calibration</h2>
+
+<p>I followed the steps for calibration, and this is still ongoing. To keep things slow, I used the minimum range on the throttle PWM signal which caused movement. This ended up being 355 / 370 / 385 for reverse, neutral, forward.</p>
+
+<p>The turning PWM signal was set to 290 / 420 for Right / Left.</p>
+
+<h2 id="controller-problems">Controller problems</h2>
+
+<p>I purchased the recommended sony dualshock sixaxis controller, but still can’t get it running. There are several threads on connecting this bluetooth controller, using <code class="highlighter-rouge">bluetoothctl</code> to pair. On my setup, I couldn’t get the device recognized by the <code class="highlighter-rouge">devices</code> command. Work-In-Progress.</p>
+
+<h2 id="summary-next-steps">Summary, next steps</h2>
+
+<p>So that’s the next milestone. Coming up;</p>
+<ol>
+  <li>Getting the DS3 controller working</li>
+  <li>Tuning the calibration</li>
+  <li>Sketching the deep learning network model</li>
+</ol>
+
+<hr />
+
+<h1 id="-feb-2-2018---procurement-update"><a name="Feb02"></a> Feb. 2, 2018 - Procurement Update</h1>
+
+<p>Here’s my experience matching the parts list with the goal being getting delivery of everything down to a week or so.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Supplier</th>
+      <th>Price [EUR]</th>
+      <th>Tag</th>
+      <th>Qty</th>
+      <th>Part description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>(Amazon)</td>
+      <td>35</td>
+      <td>R Pi</td>
+      <td>1</td>
+      <td>Raspberry Pi 3 Model B ARM-Cortex-A53 4x 1,2GHz, 1GB RAM, WLAN, Bluetooth, LAN, 4x USB</td>
+    </tr>
+    <tr>
+      <td>(Amazon)</td>
+      <td>23</td>
+      <td>SD</td>
+      <td>1</td>
+      <td>SanDisk Ultra 64GB microSDXC Speicherkarte + Adapter bis zu 100 MB/Sek., Class 10, U1, A1, FFP</td>
+    </tr>
+    <tr>
+      <td>(Amazon)</td>
+      <td>8</td>
+      <td>Servo Driver</td>
+      <td>1</td>
+      <td>Xcsource PCA9685 16 Kanal 12 Bit PWM Servo Motor Treiber IIC Schnittstelle I2C Modul für Arduino Roboter TE477 von XCSOURCE</td>
+    </tr>
+    <tr>
+      <td>(Amazon)</td>
+      <td>9</td>
+      <td>Pi power</td>
+      <td>1</td>
+      <td>Externer Akku Power Bank Power Pack Ladegerät 5200mAh Tragbar Handy Ladegerät für iPhone X 8 8Plus 7 6s 6Plus, iPad, Samsung Galaxy und weitere Smartphones von TESSAN</td>
+    </tr>
+    <tr>
+      <td>(Amazon)</td>
+      <td>32</td>
+      <td>Camera</td>
+      <td>1</td>
+      <td>SainSmart Wide Angle Fish-Eye Camera Lenses for Raspberry Pi Arduino von SainSmart</td>
+    </tr>
+    <tr>
+      <td>(Amazon)</td>
+      <td>13</td>
+      <td>Parts</td>
+      <td>1</td>
+      <td>Misc electro parts</td>
+    </tr>
+    <tr>
+      <td>HobbyKing</td>
+      <td>110</td>
+      <td>Car</td>
+      <td>1</td>
+      <td>Basher 1/16 4wd mini monster truck v2 - bad bug (arr)</td>
+    </tr>
+    <tr>
+      <td>HobbyKing</td>
+      <td>17</td>
+      <td>Batteries</td>
+      <td>2</td>
+      <td>Turnigy 1700mah 2s 20c lipo-pack (anzüge 1/16 monster beatle, sct &amp; buggy)</td>
+    </tr>
+    <tr>
+      <td>HobbyKing</td>
+      <td>27</td>
+      <td>Charger</td>
+      <td>1</td>
+      <td>Accucell s60 ac-ladegerät (eu-stecker)</td>
+    </tr>
+    <tr>
+      <td>Konsolenkost</td>
+      <td>33</td>
+      <td>DS3 Controller</td>
+      <td>1</td>
+      <td>1 x PS3 - Original DualShock 3 Wireless Controller #schwarz [Sony] (sehr guter Zustand) (gebraucht)</td>
+    </tr>
+    <tr>
+      <td> </td>
+      <td><strong>306</strong></td>
+      <td> </td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The major difference being the base car. The Exceed Magnet is basically sold out in Europe, I contacted two suppliers in Berlin who informed me that they will not be restocking either. So I spent an inordinate amount of time trying to decide on an alternative 1/16 truck chassis, with the requirement of shipping from Europe. If you allow for more shipping time/expense, you can of course expand your search.</p>
+
+<p>Here’s what I came up with;</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"><img src="/Post1_2018FEB02/Car1.jpg" alt="car" /></th>
+      <th style="text-align: center"><img src="/Post1_2018FEB02/Chassis.jpg" alt="chassis" /></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">Car</td>
+      <td style="text-align: center">Chassis</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>There are two models selling with the same chassis. The AAR version ships from Europe, other variants may not.</p>
+
+<p>Here’s the marketing video;</p>
+
+<p><a href="https://www.youtube.com/watch?v=GdtnAzs16lQ"><img src="https://img.youtube.com/vi/GdtnAzs16lQ/0.jpg" alt="Video" /></a></p>
+
+<p>Next steps:</p>
+<ul>
+  <li><strong>Mounting:</strong> Obviously the stock 3D printed parts are not going to fit, so will need to make a new design. I am considering laser-cut acrylic. I want to make a design with flexibility for mounting more sensors. I will wait until the car arrives to make measurements.</li>
+  <li><strong>Software Installation</strong></li>
+</ul>
+
+
+      </section>
+
+    </div>
+
+    
+  </body>
+</html>
