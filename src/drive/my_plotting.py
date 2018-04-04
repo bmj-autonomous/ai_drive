@@ -61,8 +61,8 @@ def plot_sample(data_dict):
 
 
 
-def plot_hist_dict(history_dict):
-    model_title = "10 Epochs"
+def plot_hist_dict(history_dict, model_title = ''):
+    #model_title = "10 Epochs"
     #fig = plt.figure(figsize=(5,4))
     #fig=plt.figure(figsize=(20, 10),facecolor='white')
 
@@ -75,6 +75,7 @@ def plot_hist_dict(history_dict):
     ax1.legend(loc='upper right')
     ax1.set_xlabel('Epochs')
     ax1.set_ylabel('Values')
+    ax1.set_ylim([0,1])
     
     ax2.plot(history_dict['epoch'],  history_dict['history']['acc'],label="Train")
     ax2.plot(history_dict['epoch'],  history_dict['history']['val_acc'],label="CV")
@@ -82,10 +83,13 @@ def plot_hist_dict(history_dict):
     ax2.legend(loc='upper right')
     ax2.set_xlabel('Epochs')
     ax2.set_ylabel('Values')
+    ax2.set_ylim([0.5,1])
+
     
-    plt.suptitle(model_title, fontsize=16)
+    this_plot = plt.suptitle(model_title, fontsize=16)
     
-    plt.show()
+    return f 
+    #plt.show()
 
 #plot_hist(history_dict)
 

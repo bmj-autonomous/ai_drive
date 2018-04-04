@@ -1,15 +1,8 @@
-# Overview
-
-Get a minimum viable vehicle running in a month!
-
-- Vehicle drives autonomously between taped lines
-- Duct tape, chewing gum, and superglue allowed!
-
-[(Github Repo with source)](https://github.com/MarcusJones/ai_drive)
-
 {::nomarkdown}
 <h1 style="text-align: center;"> Table Of Contents </h1>
 {:/}
+
+[(Github Repo with source)](https://github.com/MarcusJones/ai_drive)
 
 #### [Mar. 28, Driving badly](#Mar28) - The one where the car tried to drive on a line
 
