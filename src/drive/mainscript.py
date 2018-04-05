@@ -245,7 +245,7 @@ if __name__ == "__main__":
     if 1:
         #dropout = np.arange(0,1,0.1)
         #dropout = np.arange(0,1,0.1)
-        dropout = [0.4, 0.5, 0.6]
+        dropout = [0.3, 0.4, 0.5, 0.6, 0.7]
         for this_drop in dropout:
             ks.backend.clear_session()
             print(this_drop)
