@@ -160,8 +160,8 @@ def run(dropout, project_name, data_source_name):
     validation_generator = my_generators.get_validation_generator(data_dict['val'],batch_size)
     
     #--- Get model, and save it
-    #model = my_models.get_model_4xconv_vary_drop(dropout)
-    model = my_models.get_model_3xconv_vary_drop(dropout)
+    model = my_models.get_model_4xconv_vary_drop(dropout)
+    #model = my_models.get_model_3xconv_vary_drop(dropout)
     #model = my_models.get_model_testing_tiny()
     #model = my_models.get_model_2xconv_vary_drop(dropout)
 
