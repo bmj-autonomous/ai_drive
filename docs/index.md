@@ -12,15 +12,24 @@
 
 #### [Mar. 05, DS3 controller ](#Mar05) - The one where the controller connects
 
-#### [Feb. 02, Procurement ](#Feb02) - The one where stuff is bought
+#### [Feb. 02, Procurement ](#Feb02) - The one where stuff is ordered
 
 # <a name="Mar28"></a>Mar. 28, 2018 - Driving badly
 
-asdfasdfasdf
+{::nomarkdown}
+<iframe width="420" height="315" frameBorder="0"
+src="https://www.youtube.com/embed/_ueahZcpD4Y">
+</iframe>
+{:/}
+
 
 # <a name="Mar22"></a>Mar. 22, 2018 - Calibration
+{::nomarkdown} 
+<iframe width="420" height="315" frameBorder="0"
+src="https://www.youtube.com/embed/PXRm-XfWJYI">
+</iframe>
+{:/}
 
-asdfasdfasdf
 
 # <a name="Mar06"></a>Mar. 6, 2018 - Cats and Dogs
 
@@ -136,11 +145,13 @@ the controller to communicate via BlueTooth with the car.
 
 To test the controller, I tried connecting it to my laptop. Running the
 ```bluetoothctl``` utility gave immediate results;
+
 ```
 user@laptop2 ~ $ bluetoothctl
 [NEW] Controller 58:91:CF:1C:30:17 laptop2 [default]
 [NEW] Device FC:62:B9:3B:B3:B5 PLAYSTATION(R)3 Controller
 ```
+
 This provided the necessary verifcation to show that the controller was functional and the
 correct model.
 
@@ -347,7 +358,11 @@ There are two models selling with the same chassis. The AAR version ships from E
 
 Here's the marketing video;
 
-[![Video](https://img.youtube.com/vi/GdtnAzs16lQ/0.jpg)](https://www.youtube.com/watch?v=GdtnAzs16lQ)
+{::nomarkdown}
+<iframe width="420" height="315" frameBorder="0"
+src="https://www.youtube.com/embed/GdtnAzs16lQ">
+</iframe>
+{:/}
 
 Next steps:
 - **Mounting:** Obviously the stock 3D printed parts are not going to fit, so will need to make a new design. I am considering laser-cut acrylic. I want to make a design with flexibility for mounting more sensors. I will wait until the car arrives to make measurements.
