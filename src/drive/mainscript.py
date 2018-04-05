@@ -124,51 +124,6 @@ def add_project_logger(logger,path_proj):
     return logger 
 
 
-def print_metrics(test_df):    
-    accuracy_score = sklearn.metrics.accuracy_score(test_df['label'], 
-                                    test_df['label_pred'], 
-                                    normalize=True,
-                                    sample_weight=None)
-    
-    roc_auc_score = sklearn.metrics.roc_auc_score(y_true = test_df['label'], 
-                                                  y_score = test_df['prediction_prob'], 
-                                                  average='macro', 
-                                                  sample_weight=None)
-    
-    confusion_matrix  = sklearn.metrics.confusion_matrix(test_df['label'], 
-                                                    test_df['label_pred'])
-    
-    f1_score  = sklearn.metrics.f1_score(y_true = test_df['label'], 
-                                    y_pred = test_df['label_pred'], 
-                                    labels=None, 
-                                    pos_label=1, 
-                                    average='binary', 
-                                    sample_weight=None)
-    
-    
-    log_loss  = sklearn.metrics.log_loss(y_true = test_df['label'], 
-                                        y_pred = test_df['label_pred'],  
-                                        eps=1e-15, 
-                                        normalize=True, 
-                                        sample_weight=None, 
-                                        labels=None)
-    
-    
-    precision_score = sklearn.metrics.precision_score(y_true = test_df['label'], 
-                                        y_pred = test_df['label_pred'], 
-                                                 labels=None, 
-                                                 pos_label=1, 
-                                                 average='binary', 
-                                                 sample_weight=None)
-    
-    
-    logging.info("accuracy_score {}".format(accuracy_score))
-    logging.info("roc_auc_score {}".format(roc_auc_score))
-    logging.info("confusion_matrix {}".format(confusion_matrix))
-    logging.info("f1_score {}".format(f1_score))
-    logging.info("log_loss {}".format(log_loss))
-    logging.info("precision_score {}".format(precision_score))
-
 
 
     
@@ -256,7 +211,8 @@ def run(dropout, project_name, data_source_name):
     logging.info("Finished run {}".format(os.path.split(path_run)[-1]))
     
     #--- Testing
-    test_df = my_testing.test_model(model,data_dict)
+    test_dir_root = data_dict['my_test']
+    test_df = my_testing.test_model(model,test_dir_root)
     path_testing_result = os.path.join(path_run,r"saved_testing.csv")
     with open(path_testing_result,'w') as f:
         test_df.to_csv(f)

@@ -31,6 +31,7 @@ def get_test_generator(directory,batch_size):
         target_size = (150,150),
         batch_size = batch_size,
         class_mode = "binary",
+        shuffle=False,
     );
     
     return(test_generator)

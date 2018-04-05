@@ -44,7 +44,19 @@ Two variants of image generation were employed; the simple default which
 | zoom_range         | 0      | 0.2       |
 | horizontal_flip    | False  | True      |
 
+### Aside; Keras test generator shuffles images by default
+Disable
+generator = datagen.flow_from_directory(dataset_dir,
+                                        target_size=(299,299),
+                                        batch_size=batch_size,
+                                        class_mode=None,
+                                        shuffle=False)
+
+
+
 ### Aside; TensorFlow resource exhaustion
+
+
 
 After running several parameter sets (i.e. varying Dropout, model architecture),
 TensorFlow would crash with a ```Resource Exhaustion``` error. After some searching,

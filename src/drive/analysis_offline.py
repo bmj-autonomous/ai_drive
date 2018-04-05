@@ -146,21 +146,28 @@ def get_log_file(this_run_path):
     assert os.path.exists(log_file)
     
     with open(log_file) as f:
-        #for l in lines:
-            #print(l)
         lines = f.readlines()
-        #content = [x.strip() for x in content] 
     
     start_time = parse_log_string(lines[0])['dt']
+    #reg
     end_time = parse_log_string(lines[-1])['dt']
     elapsed = end_time-start_time
+    elapsed_str = None
+    
     finish_found = None
     generator = None
     #for l in lines[-100:-1]:
-    for l in lines[0:100]:        
+    for l in lines:        
         l = l.strip()
-        res_dict = parse_log_string(l)
         
+        if re.match('\[\d.*\]\]',l): # Workaround for the confusion matrix
+            continue
+        
+        #Elapsed training
+        
+        res_dict = parse_log_string(l)
+        if re.match('Elapsed training time',res_dict['logstr']):
+            elapsed_str = res_dict['logstr']
         # Get the image generator
         if not generator: 
             gen_regex = re.compile(r"get_train_generator")
@@ -176,10 +183,16 @@ def get_log_file(this_run_path):
         # Check if finished
         finished_regex = re.compile(r"Finished training")
         finished_line = finished_regex.match(res_dict['logstr'])
-        if finished_line: 
+        if finished_line:
+            
             finish_found=True
     
-    return({'finished':finish_found,'start':start_time,'elapsed':elapsed,'generator':generator})
+    return({'finished':finish_found,
+            'start':start_time,
+            'end':end_time,
+            'elapsed':elapsed,
+            'elapsed_str':elapsed_str,
+            'generator':generator})
     #assert(finish_found)
 
 
