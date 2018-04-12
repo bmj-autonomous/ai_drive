@@ -21,7 +21,7 @@
 # Concept video
 {::nomarkdown}
 <iframe width="420" height="315" frameBorder="0"
-src="https://www.youtube.com/watch?v=5tod1gMdhys">
+src="https://www.youtube.com/embed/5tod1gMdhys">
 </iframe>
 {:/}
 
@@ -31,7 +31,7 @@ A few successful laps on a different style of track.
 
 {::nomarkdown}
 <iframe width="420" height="315" frameBorder="0"
-src="https://www.youtube.com/watch?v=Nrv20lAhhfE">
+src="https://www.youtube.com/embed/Nrv20lAhhfE">
 </iframe>
 {:/}
 
@@ -39,7 +39,7 @@ The visulization concept, built on the deconvolution of the trained model.
 
 {::nomarkdown}
 <iframe width="420" height="315" frameBorder="0"
-src="https://www.youtube.com/watch?v=NqBvn0Zya0I">
+src="https://www.youtube.com/embed/NqBvn0Zya0I">
 </iframe>
 {:/}
 
@@ -48,11 +48,12 @@ The visulization can be used to diagnose driving errors - what did the trained C
 
 {::nomarkdown}
 <iframe width="420" height="315" frameBorder="0"
-src="https://www.youtube.com/watch?v=6Q3Z4mv3be0">
+src="https://www.youtube.com/embed/6Q3Z4mv3be0">
 </iframe>
 {:/}
 
  
+
 
 
 
