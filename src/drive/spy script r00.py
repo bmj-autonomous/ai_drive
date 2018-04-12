@@ -47,10 +47,10 @@ def dflatten(current, key, result):
 #%% Paths 
 
 # Project path
-this_project_path = r"/media/batman/USB STICK"
-project_name = r'catdog6'
-path_root_project = os.path.join(this_project_path,project_name)
-assert os.path.exists(path_root_project)
+this_project_path = r"/media/batman/SABRINI/PROJECT"
+#project_name = r'catdog6'
+#path_root_project = os.path.join(this_project_path,project_name)
+assert os.path.exists(this_project_path)
 
 # Full data
 path_data_root = r"/home/batman/Dropbox/DATA/cats_dogs_all_test_split"
@@ -65,17 +65,15 @@ IMG_SIZE = 150
 layer_funcs = analysis.LAYER_FUNCS
 
 ### Folders
-run_folders = [dir for dir in os.listdir(path_root_project) if re.match('run',dir)]
-run_folders.sort()
-
-
+#run_folders = [dir for dir in os.listdir(path_root_project) if re.match('run',dir)]
+#run_folders.sort()
 
 
 
 #%% Next
 run_list = list()
 
-project_names = ['catdog1','catdog5','catdog6']
+project_names = ['catdog5','catdog6','catdog7','catdog8']
 
 for project_name in project_names:
     print('******************', project_name)
@@ -119,8 +117,7 @@ for project_name in project_names:
         
         ###### Architecture ######
         model = analysis.load_model(this_run_path)
-        arch_dict = analysis.read_model_json(this_run_path)
-        
+        summary['arch_dict'] = analysis.read_model_json(this_run_path)
         #model.summary()
         parameter_counts = analysis.count_params(model)
         summary['param_counts'] = parameter_counts
@@ -133,13 +130,13 @@ for project_name in project_names:
         
     
         ###### Loop layers ######
-        for i,layer in enumerate(arch_dict['config']):
+        for i,layer in enumerate(summary['arch_dict']['config']):
             if layer['class_name'] == 'Dropout':
                 #print(layer['config']['rate'])
                 summary['Dropout'] = layer['config']['rate']
                 
         layer_summary = defaultdict(int)
-        for layer in arch_dict['config']:
+        for layer in summary['arch_dict']['config']:
             layer_summary[layer['class_name']] += 1
         summary['layers'] = layer_summary
         
@@ -168,6 +165,7 @@ for project_name in project_names:
             test_df = pd.read_csv(f)
         
         summary['metrics'] = my_testing.get_metrics(test_df)
+        
         #break
         ###### Summary string ######
         assert summary['layers']['Conv2D'] == summary['layers']['MaxPooling2D']
@@ -192,17 +190,17 @@ for project_name in project_names:
 #import matplotlib as mpl
 #mpl.use('Agg')
 #this_run = run_list[12]
-
-for this_run in run_list:
-
-    #title_str.append()
+if 0:
+    for this_run in run_list:
     
-    this_plot = my_plotting.plot_hist_dict(this_run['hist_dict'],summary['title_str'])
-    save_path = os.path.join(path_root_project,summary['title_str']+'.png')
-    this_plot.savefig(save_path,facecolor=this_plot.get_facecolor(), edgecolor='none')
-    
-    mpl.pyplot.close("all")
-    #my_plotting.plot_hist_dict(this_run['hist_dict'],title_str).show()
+        #title_str.append()
+        
+        this_plot = my_plotting.plot_hist_dict(this_run['hist_dict'],summary['title_str'])
+        save_path = os.path.join(path_root_project,summary['title_str']+'.png')
+        this_plot.savefig(save_path,facecolor=this_plot.get_facecolor(), edgecolor='none')
+        
+        mpl.pyplot.close("all")
+        #my_plotting.plot_hist_dict(this_run['hist_dict'],title_str).show()
 
 #%% Frame
 d = list()
@@ -210,7 +208,7 @@ d = list()
 #new = 
 
 for run in run_list:
-    #print(run)
+    print('Appended',run['project name'],run['run'])
     #run.pop('hist_dict',None)
     #run.pop('param_counts',None)
     #run.pop('layers',None)
@@ -222,23 +220,54 @@ df = pd.DataFrame(d)
 #%% Export
 #from pandas import ExcelWriter
 
-writer = pd.ExcelWriter('PythonExport.xlsx')
-yourdf.to_excel(writer,'Sheet5')
+writer = pd.ExcelWriter('/media/batman/USB STICK/PythonExport.xlsx')
+df.to_excel(writer,'Sheet1')
 writer.save()
 
-df.to_
+
+#%% Analysis
 
 
+df2 = df.copy() # Create a copy
+# Reindex
+df2.set_index(['num_convpool', 'Dropout'], inplace=True)
+
+# Discard other cols
+keepcols = list()
+keepcols+=[col for col in df2.columns if re.match('metrics',col)]
+keepcols+=[col for col in df2.columns if re.match('hist_dict',col)]
+keepcols+=['param_counts.Total']
 
 
+df2.index
+df2 = df2.filter(keepcols)
+
+writer = pd.ExcelWriter('/media/batman/USB STICK/PythonExport2.xlsx')
+df2.to_excel(writer,'Sheet1')
+writer.save()
+
+aa = df2.query('num_convpool==4')
 
 
+col_logloss = df.groupby(['num_convpool', 'Dropout'])['metrics.log_loss'].mean()
+col_logloss.name = 'mean logloss'
+
+col_f1 = df.groupby(['num_convpool', 'Dropout'])['metrics.f1_score'].mean()
+col_f1.name = 'mean F1'
 
 
+a1 = df.groupby(['num_convpool', 'Dropout'])['metrics.accuracy_score'].mean()
+a1.name = 'mean accuracy'
+a2 = df.groupby(['num_convpool', 'Dropout'])['metrics.accuracy_score'].std()
+a2.name = 'std accuracy'
+a3 = df.groupby(['num_convpool', 'Dropout'])['metrics.accuracy_score'].count()
+a3.name = 'count accuracy'
+
+frames = [a1, a2, a3,col_logloss,col_f1]
+df_result = pd.concat(frames, axis=1)
 
 
-
-
+a = df2.loc[3]
 
 
 

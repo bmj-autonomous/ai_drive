@@ -14,6 +14,48 @@
 
 #### [Feb. 02, Procurement ](#Feb02) - The one where stuff is ordered
 
+
+
+
+
+# Concept video
+{::nomarkdown}
+<iframe width="420" height="315" frameBorder="0"
+src="https://www.youtube.com/watch?v=5tod1gMdhys">
+</iframe>
+{:/}
+
+# Deconvolutional visualization
+
+A few successful laps on a different style of track. 
+
+{::nomarkdown}
+<iframe width="420" height="315" frameBorder="0"
+src="https://www.youtube.com/watch?v=Nrv20lAhhfE">
+</iframe>
+{:/}
+
+The visulization concept, built on the deconvolution of the trained model. 
+
+{::nomarkdown}
+<iframe width="420" height="315" frameBorder="0"
+src="https://www.youtube.com/watch?v=NqBvn0Zya0I">
+</iframe>
+{:/}
+
+The visulization can be used to diagnose driving errors - what did the trained CNN model 'see' that caused 'confusion'?
+
+
+{::nomarkdown}
+<iframe width="420" height="315" frameBorder="0"
+src="https://www.youtube.com/watch?v=6Q3Z4mv3be0">
+</iframe>
+{:/}
+
+ 
+
+
+
 # <a name="Mar28"></a>Mar. 28, 2018 - Driving badly
 
 {::nomarkdown}
