@@ -19,40 +19,44 @@
 
 
 # Concept video
+{::nomarkdown}<p>{:/}
+
 {::nomarkdown}
 <iframe width="420" height="315" frameBorder="0"
 src="https://www.youtube.com/embed/5tod1gMdhys">
 </iframe>
 {:/}
 
+{::nomarkdown}<p>{:/}
+
 # Deconvolutional visualization
 
 A few successful laps on a different style of track. 
-
+{::nomarkdown}<p>{:/}
 {::nomarkdown}
 <iframe width="420" height="315" frameBorder="0"
 src="https://www.youtube.com/embed/Nrv20lAhhfE">
 </iframe>
 {:/}
-
+{::nomarkdown}<p>{:/}
 The visulization concept, built on the deconvolution of the trained model. 
-
+{::nomarkdown}<p>{:/}
 {::nomarkdown}
 <iframe width="420" height="315" frameBorder="0"
 src="https://www.youtube.com/embed/NqBvn0Zya0I">
 </iframe>
 {:/}
-
+{::nomarkdown}<p>{:/}
 The visulization can be used to diagnose driving errors - what did the trained CNN model 'see' that caused 'confusion'?
 
-
+{::nomarkdown}<p>{:/}
 {::nomarkdown}
 <iframe width="420" height="315" frameBorder="0"
 src="https://www.youtube.com/embed/6Q3Z4mv3be0">
 </iframe>
 {:/}
 
- 
+{::nomarkdown}<p>{:/}
 
 
 
