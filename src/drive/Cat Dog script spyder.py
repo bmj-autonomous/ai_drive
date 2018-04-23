@@ -4,7 +4,11 @@
 Created on Wed Apr  4 11:44:31 2018
 
 @author: batman
+
+FOR SPYDER
 """
+
+
 
 #%% Setup
 
@@ -47,7 +51,7 @@ def dflatten(current, key, result):
 #%% Paths 
 
 # Project path
-this_project_path = r"/media/batman/SABRINI/PROJECT"
+this_project_path = r"/media/batman/SABRINI/00MJ/Cat Dog runs"
 #project_name = r'catdog6'
 #path_root_project = os.path.join(this_project_path,project_name)
 assert os.path.exists(this_project_path)
@@ -73,7 +77,7 @@ layer_funcs = analysis.LAYER_FUNCS
 #%% Next
 run_list = list()
 
-project_names = ['catdog5','catdog6','catdog7','catdog8']
+project_names = ['catdog5','catdog6','catdog7','catdog8','catdog9']
 
 for project_name in project_names:
     print('******************', project_name)
@@ -184,6 +188,11 @@ for project_name in project_names:
     
         #break
 
+#%% Summary of loaded files
+print(len(run_list))
+
+for run in run_list:
+    print(run['project name'], run['run'])
 
 #%% Plot
     
@@ -217,34 +226,54 @@ for run in run_list:
     
 df = pd.DataFrame(d)
 
-#%% Export
+
+#%% Export raw data
 #from pandas import ExcelWriter
 
-writer = pd.ExcelWriter('/media/batman/USB STICK/PythonExport.xlsx')
+path_excel_out = os.path.join(this_project_path,r"PythonExport.xlsx")
+writer = pd.ExcelWriter(path_excel_out)
 df.to_excel(writer,'Sheet1')
 writer.save()
+logging.debug(f"wrote to {path_excel_out}")
 
 
-#%% Analysis
-
+#%% Analysis on reduced set
+# Keep: 
 
 df2 = df.copy() # Create a copy
 # Reindex
-df2.set_index(['num_convpool', 'Dropout'], inplace=True)
+#df2.set_index(['num_convpool', 'Dropout'], inplace=True)
 
 # Discard other cols
 keepcols = list()
+keepcols+=['num_convpool','Dropout']
 keepcols+=[col for col in df2.columns if re.match('metrics',col)]
 keepcols+=[col for col in df2.columns if re.match('hist_dict',col)]
 keepcols+=['param_counts.Total']
 
-
 df2.index
 df2 = df2.filter(keepcols)
 
-writer = pd.ExcelWriter('/media/batman/USB STICK/PythonExport2.xlsx')
+#%%
+# Save it
+path_excel_out2 = os.path.join(this_project_path,r"PythonExport2.xlsx")
+writer = pd.ExcelWriter(path_excel_out2)
 df2.to_excel(writer,'Sheet1')
 writer.save()
+
+#%%
+
+param_num_convpool = df2['num_convpool'].unique()
+param_Dropout = df2['Dropout'].unique()
+
+for depth in param_num_convpool:
+    for drop in param_Dropout:
+        select = (df2['num_convpool'] == depth) & (df2['Dropout'] == drop)
+        dfs = df2[select]
+        if not len(dfs): continue
+        print(f"Depth: {depth} Dropout: {drop:0.2f} Selected: {len(dfs)}")
+
+#%%
 
 aa = df2.query('num_convpool==4')
 
@@ -268,27 +297,6 @@ df_result = pd.concat(frames, axis=1)
 
 
 a = df2.loc[3]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
