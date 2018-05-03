@@ -7,10 +7,10 @@ logging.basicConfig(level=logging.DEBUG)
 
 
 
-path_root = r"/home/batman/d3/data/tub_67_18-04-11"
-tgt_path = r"/home/batman/d2/data/tub_67/imgs"
+path_root = r"/home/batman/d2testing/data/tub_73_18-05-02"
+tgt_path = r"/home/batman/d2testing/data/tub_73_18-05-02/imgs"
 assert os.path.exists(path_root)
-assert os.path.exists(tgt_path)```
+assert os.path.exists(tgt_path)
 
 
 files = os.listdir(path_root)
