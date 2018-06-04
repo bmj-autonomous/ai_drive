@@ -5,10 +5,8 @@ import logging
 
 logging.basicConfig(level=logging.DEBUG)
 
-
-
-path_root = r"/home/batman/d2testing/data/tub_73_18-05-02"
-tgt_path = r"/home/batman/d2testing/data/tub_73_18-05-02/imgs"
+path_root = r"/home/user1/d2testing/data/tub_73_18-05-02"
+tgt_path = r"/home/user1/d2testing/data/tub_73_18-05-02/imgs"
 assert os.path.exists(path_root)
 assert os.path.exists(tgt_path)
 
@@ -22,17 +20,7 @@ jpg_files = [fname for fname in files if os.path.splitext(fname)[1] == ext_str]
 
 logging.info("\t{} {} ext_str files in {}".format(len(jpg_files),ext_str,path_root))
 
-#these_files = jpg_files[0:10]
 these_files = jpg_files
-
-#this_file = these_files[0]
-
-
-#print(this_file)
-#this_num = re.findall("\d+",this_file)[0]
-#print(this_num)
-#print(this_num.zfill(6))
-#print(this_num.zfill(7)+'_cam-image_array_.jpg')
 
 for this_file in these_files:
     path_source = os.path.join(path_root,this_file)
@@ -45,12 +33,3 @@ for this_file in these_files:
     #raise
     shutil.copy(path_source, path_tgt)
     
-#_cam-image_array_.jpg
-#4853
-
-
-
-#re.mat
-
-#print(jpg_files[0])
-#print(os.path.splitext(files[0]))
